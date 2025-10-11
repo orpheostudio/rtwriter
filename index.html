@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTWriter - Rede Social para Escritores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Firebase App e Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5941203056187445" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>RTWriter</span>
+                </div>
+                <div class="user-actions">
+                    <span id="userWelcome" style="display: none;"></span>
+                    <button id="adminBtn" class="btn btn-outline" style="display: none;">Admin</button>
+                    <button id="loginBtn" class="btn btn-outline">Entrar</button>
+                    <button id="signupBtn" class="btn btn-primary">Cadastrar</button>
+                    <button id="logoutBtn" class="btn btn-outline" style="display: none;">Sair</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="user-profile">
+                    <div class="avatar">RT</div>
+                    <h3>Ren The Writer</h3>
+                    <p>@renthewriter</p>
+                    <p>Escritor e criador de conteúdo. Amante de histórias e palavras.</p>
+                    <div class="profile-stats">
+                        <div>
+                            <strong id="followingCount">245</strong>
+                            <span>Seguindo</span>
+                        </div>
+                        <div>
+                            <strong id="followersCount">1.2K</strong>
+                            <span>Seguidores</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trending -->
+                <div class="trending">
+                    <h2>Assuntos do momento</h2>
+                    <div class="trending-item">
+                        <h4>#EscritaCriativa</h4>
+                        <span>1.245 posts</span>
+                    </div>
+                    <div class="trending-item">
+                        <h4>Novo Livro do Ren</h4>
+                        <span>892 posts</span>
+                    </div>
+                    <div class="trending-item">
+                        <h4>#DicasParaEscritores</h4>
+                        <span>756 posts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feed -->
+            <div class="feed">
+                <!-- Post Form -->
+                <div class="post-form" id="postForm" style="display: none;">
+                    <form id="createPostForm">
+                        <textarea name="content" placeholder="O que está acontecendo?" required maxlength="280"></textarea>
+                        <div class="post-actions">
+                            <div class="post-icons">
+                                <i class="far fa-image" title="Adicionar imagem"></i>
+                                <i class="far fa-smile" title="Adicionar emoji"></i>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Publicar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Posts Container -->
+                <div id="postsContainer">
+                    <div class="loading">Carregando posts...</div>
+                </div>
+
+                <!-- Ad Container -->
+                <div class="ad-container">
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modais -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Entrar na RTWriter</h2>
+                <button class="close-btn" onclick="closeModal('loginModal')">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">E-mail</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Entrar</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">
+                <a href="#" onclick="showResetPassword()" style="color: var(--primary-color);">Esqueceu a senha?</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Criar conta na RTWriter</h2>
+                <button class="close-btn" onclick="closeModal('signupModal')">&times;</button>
+            </div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Nome completo</label>
+                    <input type="text" id="signupName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupUsername">Nome de usuário</label>
+                    <input type="text" id="signupUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">E-mail</label>
+                    <input type="email" id="signupEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Senha</label>
+                    <input type="password" id="signupPassword" name="password" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Criar conta</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="resetPasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Redefinir Senha</h2>
+                <button class="close-btn" onclick="closeModal('resetPasswordModal')">&times;</button>
+            </div>
+            <form id="resetPasswordForm">
+                <div class="form-group">
+                    <label for="resetEmail">E-mail</label>
+                    <input type="email" id="resetEmail" name="email" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar link de redefinição</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/posts.js"></script>
+    
+    <script>
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            initAuth();
+            loadPosts();
+        });
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function showResetPassword() {
+            closeModal('loginModal');
+            openModal('resetPasswordModal');
+        }
+    </script>
+</body>
+</html>
