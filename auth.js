@@ -1,150 +1,167 @@
-// Authentication functions
-let currentUser = null;
+// Variáveis globais
+let currentConversationId = null;
+let conversations = JSON.parse(localStorage.getItem('conversations')) || [];
 
-function initAuth() {
-    // Configurar event listeners
-    document.getElementById('loginBtn').addEventListener('click', () => openModal('loginModal'));
-    document.getElementById('signupBtn').addEventListener('click', () => openModal('signupModal'));
-    document.getElementById('logoutBtn').addEventListener('click', logout);
-    document.getElementById('adminBtn').addEventListener('click', () => window.location.href = 'admin.html');
+// Funções de gerenciamento de conversas
+function renderConversations() {
+    const recentItemsContainer = document.getElementById('recentConversations');
+    recentItemsContainer.innerHTML = '';
 
-    // Forms
-    document.getElementById('loginForm').addEventListener('submit', login);
-    document.getElementById('signupForm').addEventListener('submit', signup);
-    document.getElementById('resetPasswordForm').addEventListener('submit', resetPassword);
-
-    // Verificar estado de autenticação
-    auth.onAuthStateChanged((user) => {
-        if (user) {
-            currentUser = user;
-            updateUIForLoggedInUser(user);
-            loadUserProfile(user.uid);
-        } else {
-            currentUser = null;
-            updateUIForLoggedOutUser();
-        }
+    conversations.forEach((conv, index) => {
+        const recentItem = document.createElement('div');
+        recentItem.className = `recent-item ${conv.id === currentConversationId ? 'active' : ''}`;
+        recentItem.innerHTML = `
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span>${conv.title || `Conversa ${index + 1}`}</span>
+        `;
+        recentItem.addEventListener('click', () => openConversation(conv.id));
+        recentItemsContainer.appendChild(recentItem);
     });
 }
 
-async function login(e) {
-    e.preventDefault();
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
+function openConversation(conversationId) {
+    currentConversationId = conversationId;
+    const conversation = conversations.find(c => c.id === conversationId);
+    const messagesArea = document.getElementById('messagesArea');
+    messagesArea.innerHTML = '';
 
-    try {
-        const userCredential = await auth.signInWithEmailAndPassword(email, password);
-        closeModal('loginModal');
-        showNotification('Login realizado com sucesso!', 'success');
-    } catch (error) {
-        showNotification('Erro no login: ' + error.message, 'error');
+    if (conversation && conversation.messages) {
+        conversation.messages.forEach(msg => {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${msg.sender}`;
+            messageDiv.innerHTML = `
+                <div class="message-avatar ${msg.sender}"></div>
+                <div class="message-content">${msg.text}</div>
+            `;
+            messagesArea.appendChild(messageDiv);
+        });
     }
+
+    renderConversations();
+    document.querySelector('.sidebar').classList.add('collapsed');
 }
 
-async function signup(e) {
-    e.preventDefault();
-    const email = document.getElementById('signupEmail').value;
-    const password = document.getElementById('signupPassword').value;
-    const fullName = document.getElementById('signupName').value;
-    const username = document.getElementById('signupUsername').value;
+function startNewConversation() {
+    const newConversation = {
+        id: Date.now().toString(),
+        title: '',
+        messages: []
+    };
+    conversations.unshift(newConversation);
+    currentConversationId = newConversation.id;
+    localStorage.setItem('conversations', JSON.stringify(conversations));
+    openConversation(currentConversationId);
+    renderConversations();
+}
 
-    try {
-        // Criar usuário no Authentication
-        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-        const user = userCredential.user;
+function sendMessage() {
+    const messageInput = document.getElementById('messageInput');
+    const message = messageInput.value.trim();
+    if (!message) return;
 
-        // Salvar dados adicionais no Firestore
-        await db.collection('users').doc(user.uid).set({
-            uid: user.uid,
-            email: email,
-            fullName: fullName,
-            username: username,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            isAdmin: false
+    const conversation = conversations.find(c => c.id === currentConversationId);
+    if (!conversation) return;
+
+    // Adiciona mensagem do usuário
+    conversation.messages.push({ sender: 'user', text: message });
+    renderConversationMessages();
+
+    // Chama a API do Yume
+    callYumeAPI(message)
+        .then(response => {
+            conversation.messages.push({ sender: 'assistant', text: response });
+            localStorage.setItem('conversations', JSON.stringify(conversations));
+            renderConversationMessages();
+        })
+        .catch(error => {
+            console.error("Erro ao chamar a API:", error);
+            conversation.messages.push({ sender: 'assistant', text: "Desculpe, ocorreu um erro ao processar sua mensagem." });
+            localStorage.setItem('conversations', JSON.stringify(conversations));
+            renderConversationMessages();
         });
 
-        closeModal('signupModal');
-        showNotification('Conta criada com sucesso!', 'success');
-    } catch (error) {
-        showNotification('Erro ao criar conta: ' + error.message, 'error');
+    messageInput.value = '';
+    document.getElementById('charCounter').textContent = '0/2000';
+    document.getElementById('sendButton').disabled = true;
+}
+
+function renderConversationMessages() {
+    const conversation = conversations.find(c => c.id === currentConversationId);
+    const messagesArea = document.getElementById('messagesArea');
+    messagesArea.innerHTML = '';
+
+    if (conversation && conversation.messages) {
+        conversation.messages.forEach(msg => {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${msg.sender}`;
+            messageDiv.innerHTML = `
+                <div class="message-avatar ${msg.sender}"></div>
+                <div class="message-content">${msg.text}</div>
+            `;
+            messagesArea.appendChild(messageDiv);
+        });
     }
 }
 
-async function logout() {
-    try {
-        await auth.signOut();
-        showNotification('Logout realizado com sucesso!', 'success');
-    } catch (error) {
-        showNotification('Erro ao fazer logout: ' + error.message, 'error');
-    }
-}
+// Inicialização
+document.addEventListener('DOMContentLoaded', () => {
+    // Welcome Modal
+    const welcomeModal = document.getElementById('welcomeModal');
+    const startButton = document.getElementById('startButton');
+    const termsCheckbox = document.getElementById('termsCheckbox');
 
-async function resetPassword(e) {
-    e.preventDefault();
-    const email = document.getElementById('resetEmail').value;
+    termsCheckbox.addEventListener('change', () => {
+        startButton.disabled = !termsCheckbox.checked;
+    });
 
-    try {
-        await auth.sendPasswordResetEmail(email);
-        closeModal('resetPasswordModal');
-        showNotification('Email de redefinição enviado!', 'success');
-    } catch (error) {
-        showNotification('Erro ao enviar email: ' + error.message, 'error');
-    }
-}
+    startButton.addEventListener('click', () => {
+        welcomeModal.style.display = 'none';
+        if (conversations.length === 0) {
+            startNewConversation();
+        }
+    });
 
-async function loadUserProfile(uid) {
-    try {
-        const userDoc = await db.collection('users').doc(uid).get();
-        if (userDoc.exists) {
-            const userData = userDoc.data();
-            document.getElementById('userWelcome').textContent = `Olá, ${userData.username}`;
-            
-            // Mostrar botão de admin se for admin
-            if (userData.isAdmin) {
-                document.getElementById('adminBtn').style.display = 'inline-block';
+    // Sidebar Toggle
+    const menuButton = document.getElementById('menuButton');
+    const sidebar = document.querySelector('.sidebar');
+
+    menuButton.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+    });
+
+    // Nova conversa
+    document.getElementById('newChatButton').addEventListener('click', startNewConversation);
+
+    // Envio de mensagem
+    const messageInput = document.getElementById('messageInput');
+    const sendButton = document.getElementById('sendButton');
+
+    messageInput.addEventListener('input', () => {
+        const length = messageInput.value.length;
+        document.getElementById('charCounter').textContent = `${length}/2000`;
+        sendButton.disabled = length === 0;
+    });
+
+    messageInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            if (!sendButton.disabled) {
+                sendMessage();
             }
         }
-    } catch (error) {
-        console.error('Erro ao carregar perfil:', error);
+    });
+
+    sendButton.addEventListener('click', sendMessage);
+
+    // Inicializa com uma conversa vazia
+    if (conversations.length === 0) {
+        startNewConversation();
+    } else {
+        currentConversationId = conversations[0].id;
+        openConversation(currentConversationId);
     }
-}
 
-function updateUIForLoggedInUser(user) {
-    document.getElementById('loginBtn').style.display = 'none';
-    document.getElementById('signupBtn').style.display = 'none';
-    document.getElementById('logoutBtn').style.display = 'inline-block';
-    document.getElementById('userWelcome').style.display = 'inline-block';
-    document.getElementById('postForm').style.display = 'block';
-}
-
-function updateUIForLoggedOutUser() {
-    document.getElementById('loginBtn').style.display = 'inline-block';
-    document.getElementById('signupBtn').style.display = 'inline-block';
-    document.getElementById('logoutBtn').style.display = 'none';
-    document.getElementById('userWelcome').style.display = 'none';
-    document.getElementById('adminBtn').style.display = 'none';
-    document.getElementById('postForm').style.display = 'none';
-}
-
-function showNotification(message, type) {
-    // Criar notificação simples
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        border-radius: 5px;
-        color: white;
-        z-index: 1001;
-        font-weight: bold;
-    `;
-    
-    notification.style.backgroundColor = type === 'success' ? 'var(--success-color)' : 'var(--danger-color)';
-    notification.textContent = message;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        document.body.removeChild(notification);
-    }, 3000);
-}
+    renderConversations();
+});
