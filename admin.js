@@ -1,203 +1,182 @@
-// Admin functions
-let adminStats = {
-    users: 0,
-    posts: 0,
-    comments: 0,
-    likes: 0
+/**
+ * SENA - Sistema de Traduções
+ * Suporta: Português (BR), English (US), Español (ES)
+ */
+
+const translations = {
+    pt: {
+        // Welcome Screen
+        welcomeTagline: 'Tecnologia com alma gentil.',
+        welcomeDescription: 'Olá! Eu sou a Sena, sua assistente digital. Estou aqui para tornar a tecnologia simples e acessível para você. Vamos começar?',
+        welcomeFeaturesTitle: '✨ O que posso fazer por você:',
+        welcomeFeaturesList: [
+            '📚 Explicar conceitos de tecnologia de forma simples',
+            '📅 Ajudar na organização do seu dia a dia',
+            '💡 Responder perguntas sobre diversos assuntos',
+            '🎯 Criar lembretes e sugestões personalizadas',
+            '🗣️ Conversar por voz (clique no microfone)'
+        ],
+        welcomeDisclaimer: '⚠️ <strong>Aviso:</strong> Sou uma inteligência artificial e posso cometer erros. Sempre verifique informações importantes em fontes confiáveis.',
+        welcomeTerms: 'Ao usar, eu concordo com os <a href="https://termos.orpheostudio.com.br" target="_blank" class="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300">Termos de Uso</a> e <a href="https://políticas.orpheostudio.com.br" target="_blank" class="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300">Políticas de Privacidade</a> da Orpheo Studio.',
+        startButton: 'Começar a conversar 🌸',
+        
+        // Chat Interface
+        headerTagline: 'Tecnologia com alma gentil',
+        statusText: 'MiraAI Conectada',
+        listeningText: 'Ouvindo...',
+        inputPlaceholder: 'Digite sua pergunta...',
+        
+        // Footer
+        footerTagline: 'As respostas da Sena utilizam MiraAI by Orpheo Studio. 🌸',
+        footerDisclaimer: 'Sena pode cometer erros. Verifique informações importantes.',
+        
+        // Initial Message
+        greeting: 'Olá! Eu sou a Sena. 🌸<br>A tecnologia com alma gentil.<br><br>Pode me chamar para o que precisar. Eu aprendo com você.',
+        
+        // Suggestions
+        suggestions: [
+            'O que você pode fazer?',
+            'Como baixo um app no celular?',
+            'Pode me explicar sobre os termos e políticas da Orpheo?',
+            'Como doar para a Orpheo Studio?'
+        ],
+        
+        // Buttons & Actions
+        btnSend: 'Enviar',
+        btnVoice: 'Ativar voz',
+        btnDarkMode: 'Modo escuro',
+        btnLanguage: 'Mudar idioma',
+        btnReport: 'Reportar problema',
+        
+        // Errors
+        errorApi: 'Desculpe, tive um problema para processar sua mensagem. Pode tentar novamente? 😔',
+        errorVoice: 'Seu navegador não suporta reconhecimento de voz.',
+        errorNetwork: 'Erro de conexão. Verifique sua internet e tente novamente.',
+        
+        // Tooltips
+        tooltipSend: 'Enviar mensagem',
+        tooltipVoice: 'Falar com Sena',
+        tooltipDark: 'Alternar modo escuro',
+        tooltipLang: 'Mudar idioma',
+        tooltipReport: 'Reportar bug'
+    },
+    
+    en: {
+        // Welcome Screen
+        welcomeTagline: 'Technology with a gentle soul.',
+        welcomeDescription: 'Hello! I am Sena, your digital assistant. I am here to make technology simple and accessible for you. Shall we begin?',
+        welcomeFeaturesTitle: '✨ What I can do for you:',
+        welcomeFeaturesList: [
+            '📚 Explain technology concepts in a simple way',
+            '📅 Help organize your daily life',
+            '💡 Answer questions on various subjects',
+            '🎯 Create reminders and personalized suggestions',
+            '🗣️ Chat by voice (click the microphone)'
+        ],
+        welcomeDisclaimer: '⚠️ <strong>Notice:</strong> I am an artificial intelligence and may make mistakes. Always verify important information from reliable sources.',
+        welcomeTerms: 'I have read and accept the <a href="https://termos.orpheostudio.com.br" target="_blank" class="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300">Terms of Use</a> and <a href="https://políticas.orpheostudio.com.br" target="_blank" class="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300">Privacy Policy</a> of Orpheo Studio.',
+        startButton: 'Start chatting 🌸',
+        
+        // Chat Interface
+        headerTagline: 'Technology with a gentle soul',
+        statusText: 'MiraAI Connected',
+        listeningText: 'Listening...',
+        inputPlaceholder: 'Type your question...',
+        
+        // Footer
+        footerTagline: 'Sena\'s responses use MiraAI by Orpheo Studio. 🌸',
+        footerDisclaimer: 'Sena may make mistakes. Verify important information.',
+        
+        // Initial Message
+        greeting: 'Hello! I am Sena. 🌸<br>Technology with a gentle soul.<br><br>Call me for anything you need. I learn with you.',
+        
+        // Suggestions
+        suggestions: [
+            'What can you do?',
+            'How do I download an app on my phone?',
+            'Can you explain Orpheo\'s terms and policies?',
+            'How to donate to Orpheo Studio?'
+        ],
+        
+        // Buttons & Actions
+        btnSend: 'Send',
+        btnVoice: 'Enable voice',
+        btnDarkMode: 'Dark mode',
+        btnLanguage: 'Change language',
+        btnReport: 'Report issue',
+        
+        // Errors
+        errorApi: 'Sorry, I had a problem processing your message. Can you try again? 😔',
+        errorVoice: 'Your browser does not support voice recognition.',
+        errorNetwork: 'Connection error. Check your internet and try again.',
+        
+        // Tooltips
+        tooltipSend: 'Send message',
+        tooltipVoice: 'Talk to Sena',
+        tooltipDark: 'Toggle dark mode',
+        tooltipLang: 'Change language',
+        tooltipReport: 'Report bug'
+    },
+    
+    es: {
+        // Welcome Screen
+        welcomeTagline: 'Tecnología con alma gentil.',
+        welcomeDescription: '¡Hola! Soy Sena, tu asistente digital. Estoy aquí para hacer la tecnología simple y accesible para ti. ¿Empezamos?',
+        welcomeFeaturesTitle: '✨ Lo que puedo hacer por ti:',
+        welcomeFeaturesList: [
+            '📚 Explicar conceptos de tecnología de forma simple',
+            '📅 Ayudar en la organización de tu día a día',
+            '💡 Responder preguntas sobre diversos temas',
+            '🎯 Crear recordatorios y sugerencias personalizadas',
+            '🗣️ Conversar por voz (haz clic en el micrófono)'
+        ],
+        welcomeDisclaimer: '⚠️ <strong>Aviso:</strong> Soy una inteligencia artificial y puedo cometer errores. Siempre verifica información importante en fuentes confiables.',
+        welcomeTerms: 'He leído y acepto los <a href="https://termos.orpheostudio.com.br" target="_blank" class="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300">Términos de Uso</a> y <a href="https://políticas.orpheostudio.com.br" target="_blank" class="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300">Políticas de Privacidad</a> de Orpheo Studio.',
+        startButton: 'Comenzar a conversar 🌸',
+        
+        // Chat Interface
+        headerTagline: 'Tecnología con alma gentil',
+        statusText: 'MiraAI Conectada',
+        listeningText: 'Escuchando...',
+        inputPlaceholder: 'Escribe tu pregunta...',
+        
+        // Footer
+        footerTagline: 'Las respuestas de Sena utilizan MiraAI by Orpheo Studio. 🌸',
+        footerDisclaimer: 'Sena puede cometer errores. Verifica información importante.',
+        
+        // Initial Message
+        greeting: '¡Hola! Soy Sena. 🌸<br>Tecnología con alma gentil.<br><br>Llámame para lo que necesites. Aprendo contigo.',
+        
+        // Suggestions
+        suggestions: [
+            '¿Qué puedes hacer?',
+            '¿Cómo descargo una app en el celular?',
+            '¿Puedes explicar los términos y políticas de Orpheo?',
+            '¿Cómo donar a Orpheo Studio?'
+        ],
+        
+        // Buttons & Actions
+        btnSend: 'Enviar',
+        btnVoice: 'Activar voz',
+        btnDarkMode: 'Modo oscuro',
+        btnLanguage: 'Cambiar idioma',
+        btnReport: 'Reportar problema',
+        
+        // Errors
+        errorApi: 'Lo siento, tuve un problema procesando tu mensaje. ¿Puedes intentar de nuevo? 😔',
+        errorVoice: 'Tu navegador no soporta reconocimiento de voz.',
+        errorNetwork: 'Error de conexión. Verifica tu internet e intenta nuevamente.',
+        
+        // Tooltips
+        tooltipSend: 'Enviar mensaje',
+        tooltipVoice: 'Hablar con Sena',
+        tooltipDark: 'Alternar modo oscuro',
+        tooltipLang: 'Cambiar idioma',
+        tooltipReport: 'Reportar error'
+    }
 };
 
-function initAdmin() {
-    // Verificar se usuário é admin
-    auth.onAuthStateChanged(async (user) => {
-        if (user) {
-            const userDoc = await db.collection('users').doc(user.uid).get();
-            const userData = userDoc.data();
-            
-            if (userData && userData.isAdmin) {
-                loadAdminData();
-            } else {
-                window.location.href = 'index.html';
-            }
-        } else {
-            window.location.href = 'index.html';
-        }
-    });
-}
+// Exportar traduções
+window.SENA_TRANSLATIONS = translations;
 
-async function loadAdminData() {
-    loadStats();
-    loadPostsForAdmin();
-    loadUsers();
-}
-
-async function loadStats() {
-    try {
-        // Contar usuários
-        const usersSnapshot = await db.collection('users').get();
-        adminStats.users = usersSnapshot.size;
-        
-        // Contar posts
-        const postsSnapshot = await db.collection('posts').get();
-        adminStats.posts = postsSnapshot.size;
-        
-        // Contar comentários
-        const commentsSnapshot = await db.collection('comments').get();
-        adminStats.comments = commentsSnapshot.size;
-        
-        // Contar likes
-        const likesSnapshot = await db.collection('likes').get();
-        adminStats.likes = likesSnapshot.size;
-        
-        updateStatsUI();
-    } catch (error) {
-        console.error('Erro ao carregar estatísticas:', error);
-    }
-}
-
-function updateStatsUI() {
-    const statsContainer = document.getElementById('statsContainer');
-    statsContainer.innerHTML = `
-        <div class="stat-card">
-            <h3>Usuários</h3>
-            <p>${adminStats.users}</p>
-        </div>
-        <div class="stat-card">
-            <h3>Posts</h3>
-            <p>${adminStats.posts}</p>
-        </div>
-        <div class="stat-card">
-            <h3>Comentários</h3>
-            <p>${adminStats.comments}</p>
-        </div>
-        <div class="stat-card">
-            <h3>Curtidas</h3>
-            <p>${adminStats.likes}</p>
-        </div>
-    `;
-}
-
-async function loadPostsForAdmin() {
-    const container = document.getElementById('adminPostsContainer');
-    
-    try {
-        const snapshot = await db.collection('posts')
-            .orderBy('createdAt', 'desc')
-            .get();
-        
-        container.innerHTML = '';
-        
-        if (snapshot.empty) {
-            container.innerHTML = '<div class="loading">Nenhum post encontrado.</div>';
-            return;
-        }
-        
-        for (const doc of snapshot.docs) {
-            const post = { id: doc.id, ...doc.data() };
-            const userDoc = await db.collection('users').doc(post.userId).get();
-            const userData = userDoc.exists ? userDoc.data() : { username: 'usuário' };
-            
-            const postElement = document.createElement('div');
-            postElement.className = 'post-item';
-            postElement.innerHTML = `
-                <div class="post-header">
-                    <div class="avatar">${userData.username.charAt(0).toUpperCase()}</div>
-                    <div class="post-info">
-                        <h3>${userData.username}</h3>
-                        <span>${formatDate(post.createdAt)}</span>
-                    </div>
-                </div>
-                <p>${escapeHtml(post.content)}</p>
-                <div class="admin-actions">
-                    <button class="btn btn-outline" onclick="deletePost('${post.id}')">Excluir Post</button>
-                </div>
-            `;
-            container.appendChild(postElement);
-        }
-    } catch (error) {
-        console.error('Erro ao carregar posts:', error);
-        container.innerHTML = '<div class="loading">Erro ao carregar posts.</div>';
-    }
-}
-
-async function loadUsers() {
-    const container = document.getElementById('usersContainer');
-    
-    try {
-        const snapshot = await db.collection('users').get();
-        container.innerHTML = '';
-        
-        if (snapshot.empty) {
-            container.innerHTML = '<div class="loading">Nenhum usuário encontrado.</div>';
-            return;
-        }
-        
-        snapshot.forEach((doc) => {
-            const user = { id: doc.id, ...doc.data() };
-            const userElement = document.createElement('div');
-            userElement.className = 'user-item';
-            userElement.innerHTML = `
-                <div class="user-info">
-                    <strong>${user.username}</strong>
-                    <span>${user.email}</span>
-                    <small>Admin: ${user.isAdmin ? 'Sim' : 'Não'}</small>
-                </div>
-                <div class="admin-actions">
-                    <button class="btn btn-outline" onclick="toggleAdmin('${user.id}', ${!user.isAdmin})">
-                        ${user.isAdmin ? 'Remover Admin' : 'Tornar Admin'}
-                    </button>
-                </div>
-            `;
-            container.appendChild(userElement);
-        });
-    } catch (error) {
-        console.error('Erro ao carregar usuários:', error);
-        container.innerHTML = '<div class="loading">Erro ao carregar usuários.</div>';
-    }
-}
-
-async function deletePost(postId) {
-    if (confirm('Tem certeza que deseja excluir este post?')) {
-        try {
-            // Excluir post e todas as interações relacionadas
-            const batch = db.batch();
-            
-            // Excluir post
-            batch.delete(db.collection('posts').doc(postId));
-            
-            // Excluir likes
-            const likesSnapshot = await db.collection('likes').where('postId', '==', postId).get();
-            likesSnapshot.forEach(doc => batch.delete(doc.ref));
-            
-            // Excluir comentários
-            const commentsSnapshot = await db.collection('comments').where('postId', '==', postId).get();
-            commentsSnapshot.forEach(doc => batch.delete(doc.ref));
-            
-            // Excluir shares
-            const sharesSnapshot = await db.collection('shares').where('postId', '==', postId).get();
-            sharesSnapshot.forEach(doc => batch.delete(doc.ref));
-            
-            await batch.commit();
-            showNotification('Post excluído com sucesso!', 'success');
-            loadPostsForAdmin();
-            loadStats();
-        } catch (error) {
-            showNotification('Erro ao excluir post: ' + error.message, 'error');
-        }
-    }
-}
-
-async function toggleAdmin(userId, makeAdmin) {
-    try {
-        await db.collection('users').doc(userId).update({
-            isAdmin: makeAdmin
-        });
-        
-        showNotification(`Usuário ${makeAdmin ? 'tornado admin' : 'removido como admin'} com sucesso!`, 'success');
-        loadUsers();
-    } catch (error) {
-        showNotification('Erro ao atualizar usuário: ' + error.message, 'error');
-    }
-}
-
-// Inicializar admin quando a página carregar
-document.addEventListener('DOMContentLoaded', initAdmin);
+console.log('🌍 Traduções carregadas (pt, en, es)');
