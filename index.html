@@ -3,204 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Facilita+ - Seu assistente de IA inteligente powered by ORPHEO Platforms">
-    <meta name="theme-color" content="#a855f7">
-    <title>Facilita+ | Chat IA</title>
-    <link rel="icon" href="https://i.imgur.com/dkIwxzM.png">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#7C3AED">
+    <meta name="description" content="SENA - Assistente digital com alma gentil. Tecnologia acessível para todos.">
+    
+    <!-- SEO -->
+    <meta name="keywords" content="assistente virtual, IA, tecnologia acessível, chatbot, Orpheo Studio">
+    <meta name="author" content="Orpheo Studio">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SENA - Tecnologia com alma gentil">
+    <meta property="og:description" content="Assistente digital que torna a tecnologia simples e acessível para todos">
+    <meta property="og:image" content="https://i.imgur.com/5watJQF.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Ícones -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/5watJQF.png">
+    <link rel="apple-touch-icon" type="image/png" href="https://i.imgur.com/5watJQF.png">
+    
+    <title>SENA - Tecnologia com alma gentil</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "YOUR_CLARITY_ID");
+    </script>
 </head>
-<body>
-    <!-- Welcome Modal -->
-    <div id="welcomeModal" class="modal-overlay">
-        <div class="welcome-container">
-            <div class="welcome-content">
-                <img src="https://i.imgur.com/2eZsc43.png" alt="Yume Mascot" class="mascot-logo">
-                <img src="https://i.imgur.com/dkIwxzM.png" alt="Facilita+" class="brand-logo">
-                <h1 class="welcome-title">Bem-vindo ao Facilita+</h1>
-                <p class="welcome-subtitle">Seu assistente de IA inteligente powered by ORPHEO Platforms</p>
+<body class="transition-colors duration-300 bg-gradient-to-br from-purple-50 via-pink-50 to-purple-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-gray-900">
 
-                <div class="info-box purple">
-                    <h2>O que você pode fazer aqui:</h2>
-                    <ul>
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                            </svg>
-                            <span>Conversar com IA usando Yume</span>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                            </svg>
-                            <span>Manter histórico de conversas</span>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                            </svg>
-                            <span>Exportar conversas em diversos formatos</span>
-                        </li>
-                    </ul>
+<!-- Language Selection Modal -->
+<div id="languageModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 max-w-md w-full">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">🌍 Escolha seu idioma</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-6 text-center">Select your language | Seleccione su idioma</p>
+
+        <div class="space-y-3">
+            <button onclick="selectLanguage('pt')" class="w-full flex items-center gap-3 p-4 rounded-xl bg-purple-50 dark:bg-purple-900/30 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-colors">
+                <span class="text-3xl">🇧🇷</span>
+                <div class="text-left">
+                    <div class="font-semibold text-gray-900 dark:text-white">Português</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Brasil</div>
                 </div>
+            </button>
 
-                <div class="info-box blue">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                    <div>
-                        <p class="info-title">Powered by ORPHEO Platforms</p>
-                        <p>Integrado a Yume para respostas em tempo real.</p>
-                    </div>
+            <button onclick="selectLanguage('en')" class="w-full flex items-center gap-3 p-4 rounded-xl bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                <span class="text-3xl">🇺🇸</span>
+                <div class="text-left">
+                    <div class="font-semibold text-gray-900 dark:text-white">English</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">United States</div>
                 </div>
+            </button>
 
-                <div class="info-box yellow">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="8" x2="12" y2="12"/>
-                        <line x1="12" y1="16" x2="12.01" y2="16"/>
-                    </svg>
-                    <div>
-                        <p class="info-title">Importante:</p>
-                        <p>Ao usar o Facilita+, você concorda com nossos termos de uso e política de privacidade.</p>
-                    </div>
+            <button onclick="selectLanguage('es')" class="w-full flex items-center gap-3 p-4 rounded-xl bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                <span class="text-3xl">🇪🇸</span>
+                <div class="text-left">
+                    <div class="font-semibold text-gray-900 dark:text-white">Español</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">España</div>
                 </div>
-
-                <label class="checkbox-label">
-                    <input type="checkbox" id="termsCheckbox">
-                    <span>
-                        Li e aceito os
-                        <a href="https://termos.orpheostudio.com.br" target="_blank" rel="noopener">Termos de Uso</a>
-                        e
-                        <a href="https://termos.orpheostudio.com.br" target="_blank" rel="noopener">Política de Privacidade</a>
-                    </span>
-                </label>
-
-                <button id="startButton" class="btn-primary" disabled>
-                    Começar a usar
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </button>
-
-                <p class="footer-text">
-                    © 2025 Facilita+ | Powered by ORPHEO Platforms
-                </p>
-            </div>
+            </button>
         </div>
     </div>
+</div>
 
-    <!-- Main App Structure -->
-    <div class="main-app">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <img src="https://i.imgur.com/dkIwxzM.png" alt="Facilita+" class="sidebar-logo">
-                <button class="btn-new-chat" id="newChatButton">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                    Nova conversa
-                </button>
+<!-- Welcome Screen -->
+<div id="welcomeScreen" class="hidden min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-2xl w-full bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 transition-colors">
+        <div class="text-center mb-8">
+            <div class="flex items-center justify-center mb-6">
+                <div class="w-32 h-32 rounded-full bg-sena-gradient flex items-center justify-center sena-avatar shadow-2xl">
+                    <img src="https://i.imgur.com/5watJQF.png" alt="Logo Sena" class="w-24 h-24 object-contain">
+                </div>
             </div>
+            <h1 class="text-6xl font-bold mb-3">
+                <span class="bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">SENA</span>
+            </h1>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8" id="welcomeTagline">Tecnologia com alma gentil.</p>
+            <p class="text-gray-600 dark:text-gray-400 mb-6" id="welcomeDescription">Olá! Eu sou a Sena, sua assistente digital. Estou aqui para tornar a tecnologia simples e acessível para você. Vamos começar?</p>
+        </div>
 
-            <div class="sidebar-content">
-                <p class="recent-label">Recentes</p>
-                <div class="recent-items" id="recentConversations"></div>
-            </div>
+        <div class="bg-purple-50 dark:bg-purple-900/20 rounded-2xl p-6 mb-6">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3" id="welcomeFeaturesTitle">✨ O que posso fazer por você:</h2>
+            <ul class="space-y-2 text-gray-700 dark:text-gray-300 text-sm" id="welcomeFeaturesList">
+                <li>📚 Explicar conceitos de tecnologia de forma simples</li>
+                <li>📅 Ajudar na organização do seu dia a dia</li>
+                <li>💡 Responder perguntas sobre diversos assuntos</li>
+                <li>🎯 Criar lembretes e sugestões personalizadas</li>
+                <li>🗣️ Conversar por voz (clique no microfone)</li>
+            </ul>
+        </div>
 
-            <div class="sidebar-footer">
-                <button class="sidebar-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                    Minha conta
-                </button>
-                <button class="sidebar-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M12 14l9-5-9-5-9 5 9 5z"/>
-                        <path d="M12 21.5l-9-5 9-5 9 5-9 5zM12 3.5l-9 5 9 5 9-5-9-5z"/>
-                    </svg>
-                    Configurações
-                </button>
-                <button class="sidebar-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                        <path d="M14 11a5 5 0 0 1-7.54-.54l-3 3a5 5 0 0 1 7.07 7.07l1.71-1.71"/>
-                    </svg>
-                    Sair
-                </button>
-            </div>
+        <div class="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 rounded-2xl p-4 mb-6">
+            <p class="text-sm text-yellow-800 dark:text-yellow-200" id="welcomeDisclaimer">
+                ⚠️ <strong>Aviso:</strong> Sou uma inteligência artificial e posso cometer erros. Sempre verifique informações importantes em fontes confiáveis.
+            </p>
+        </div>
 
-            <div class="api-status">
-                <img src="https://i.imgur.com/2eZsc43.png" alt="ORPHEO Platforms" class="api-logo">
-                <div>
-                    <div class="api-name">ORPHEO Platforms</div>
-                    <div class="api-state">
-                        <span class="status-dot"></span>
-                        Online
+        <div class="mb-6">
+            <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="termsCheckbox" class="mt-1 w-5 h-5 text-purple-500 rounded focus:ring-2 focus:ring-purple-400">
+                <span class="text-sm text-gray-700 dark:text-gray-300" id="welcomeTerms">
+                    Ao usar, eu concordo com os <a href="https://termos.orpheostudio.com.br" target="_blank" class="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300">Termos de Uso</a> e <a href="https://políticas.orpheostudio.com.br" target="_blank" class="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300">Políticas de Privacidade</a> da Orpheo Studio.
+                </span>
+            </label>
+        </div>
+
+        <button onclick="startChat()" id="startButton" disabled
+                class="w-full bg-sena-gradient hover:opacity-90 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-2xl transition-all transform hover:scale-105 disabled:hover:scale-100 shadow-lg">
+            Começar a conversar 🌸
+        </button>
+
+        <p class="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">
+            Desenvolvido por <strong>Orpheo Studio</strong>
+        </p>
+    </div>
+</div>
+
+<!-- Main Chat Interface -->
+<div id="chatInterface" class="hidden min-h-screen p-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header with Controls -->
+        <div class="flex justify-between items-center mb-6">
+            <div class="text-center flex-1">
+                <div class="flex items-center justify-center mb-2">
+                    <div class="w-20 h-20 rounded-full bg-sena-gradient flex items-center justify-center sena-avatar shadow-xl">
+                        <img src="https://i.imgur.com/5watJQF.png" alt="Logo Sena" class="w-16 h-16 object-contain">
                     </div>
                 </div>
+                <h1 class="text-4xl font-bold">
+                    <span class="bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">SENA</span>
+                </h1>
+                <p class="text-gray-600 dark:text-gray-300" id="headerTagline">Tecnologia com alma gentil</p>
             </div>
-        </aside>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <header class="header">
-                <button class="btn-icon" id="menuButton">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M4 6h16M4 12h16M4 18h16"/>
+            <div class="flex gap-2 flex-wrap justify-end">
+                <!-- Language Switcher -->
+                <div class="relative">
+                    <button onclick="toggleLanguageMenu()" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all" title="Mudar idioma">
+                        <span id="currentFlag" class="text-2xl">🇧🇷</span>
+                    </button>
+                    <div id="languageMenu" class="hidden absolute right-0 mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-2 z-10 min-w-[150px]">
+                        <button onclick="changeLanguage('pt')" class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <span class="text-xl">🇧🇷</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-300">Português</span>
+                        </button>
+                        <button onclick="changeLanguage('en')" class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <span class="text-xl">🇺🇸</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-300">English</span>
+                        </button>
+                        <button onclick="changeLanguage('es')" class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <span class="text-xl">🇪🇸</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-300">Español</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button onclick="toggleDarkMode()" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all" title="Alternar modo escuro">
+                    <svg id="darkModeIcon" class="w-6 h-6 text-gray-700 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                     </svg>
                 </button>
-                <img src="https://i.imgur.com/dkIwxzM.png" alt="Facilita+" class="header-logo">
-                <div class="mode-selector">
-                    <select class="mode-select" id="modeSelector">
-                        <option>Modo Balanceado</option>
-                        <option>Modo Criativo</option>
-                        <option>Modo Preciso</option>
-                    </select>
-                </div>
-                <div class="header-status">
-                    <span class="status-dot-header"></span>
-                    Online
-                </div>
-            </header>
 
-            <div class="chat-container">
-                <div class="messages-area" id="messagesArea"></div>
+                <button onclick="reportBug()" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all" title="Reportar bug">
+                    <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden transition-colors">
+            <!-- Chat Header -->
+            <div class="bg-sena-gradient p-6 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16"></div>
+
+                <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center sena-avatar shadow-lg border-2 border-white/30" id="senaAvatarContainer">
+                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                                <img src="https://i.imgur.com/5watJQF.png" alt="Logo Sena" class="w-10 h-10 object-contain">
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-semibold text-white flex items-center gap-2">
+                                SENA
+                                <span id="statusIndicator" class="w-2 h-2 bg-green-300 rounded-full pulse-dot shadow-lg"></span>
+                            </h2>
+                            <p class="text-sm text-white/90" id="statusText">MiraAI Conectada</p>
+                        </div>
+                    </div>
+
+                    <button onclick="toggleVoiceMode()" id="voiceToggle" class="p-3 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm transition-all shadow-lg border border-white/30" title="Ativar modo de voz">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
 
-            <div class="input-area">
-                <div class="input-tools">
-                    <button class="tool-btn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                        </svg>
-                    </button>
-                    <button class="tool-btn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M21 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                            <path d="m7 15 5-5 5 5"/>
-                        </svg>
-                    </button>
-                    <span class="char-counter" id="charCounter">0/2000</span>
-                </div>
-                <div class="input-wrapper">
-                    <textarea id="messageInput" placeholder="Digite sua mensagem..." rows="1"></textarea>
-                    <button class="btn-send" id="sendButton" disabled>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-                        </svg>
-                    </button>
-                </div>
-                <p class="disclaimer">
-                    Facilita+ pode produzir informações incorretas. Verifique sempre.
-                </p>
+            <!-- Messages Container -->
+            <div id="messagesContainer" class="h-96 overflow-y-auto p-6 space-y-4 scroll-smooth">
+                <!-- Messages will be loaded here -->
             </div>
-        </main>
+
+            <!-- Input Area -->
+            <div class="border-t border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 transition-colors">
+                <div class="flex gap-2 items-end">
+                    <button onclick="startVoiceInput()" id="micButton" class="p-3 rounded-2xl bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 hover:from-purple-200 hover:to-blue-200 dark:hover:from-purple-900/50 dark:hover:to-blue-900/50 transition-all shadow-sm" title="Falar com Sena">
+                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                        </svg>
+                    </button>
+
+                    <input type="text" id="messageInput" placeholder="Digite sua pergunta..." 
+                           class="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-2xl px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-600 transition-all shadow-sm"
+                           onkeypress="handleKeyPress(event)">
+
+                    <button onclick="sendMessage()" id="sendButton" class="bg-sena-gradient hover:opacity-90 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-2xl p-3 transition-all shadow-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="voiceIndicator" class="hidden mt-3 flex items-center justify-center gap-2">
+                    <div class="flex items-center gap-1">
+                        <div class="w-1 h-4 bg-gradient-to-b from-cyan-400 to-purple-600 rounded voice-wave" style="animation-delay: 0s"></div>
+                        <div class="w-1 h-4 bg-gradient-to-b from-cyan-400 to-purple-600 rounded voice-wave" style="animation-delay: 0.1s"></div>
+                        <div class="w-1 h-4 bg-gradient-to-b from-cyan-400 to-purple-600 rounded voice-wave" style="animation-delay: 0.2s"></div>
+                    </div>
+                    <span class="text-sm ml-2 bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent font-medium" id="listeningText">Ouvindo...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-6 space-y-2">
+            <p class="text-sm text-gray-600 dark:text-gray-400" id="footerTagline">As respostas da Sena utilizam MiraAI by Orpheo Studio. 🌸</p>
+            <p class="text-xs text-gray-500 dark:text-gray-500" id="footerDisclaimer">
+                Sena pode cometer erros. Verifique informações importantes. | 
+                <a href="https://termos.orpheostudio.com.br" target="_blank" class="underline hover:text-purple-600 dark:hover:text-purple-400">Termos de Uso</a> | 
+                <a href="https://políticas.orpheostudio.com.br" target="_blank" class="underline hover:text-purple-600 dark:hover:text-purple-400">Privacidade</a>
+            </p>
+        </div>
     </div>
+</div>
 
-    <script src="app.js"></script>
-    <script src="api.js"></script>
+<!-- Scripts -->
+<script src="js/translations.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+
 </body>
 </html>
