@@ -1,167 +1,207 @@
-// Variáveis globais
-let currentConversationId = null;
-let conversations = JSON.parse(localStorage.getItem('conversations')) || [];
+/**
+ * SENA - Configuração
+ * Orpheo Studio
+ */
 
-// Funções de gerenciamento de conversas
-function renderConversations() {
-    const recentItemsContainer = document.getElementById('recentConversations');
-    recentItemsContainer.innerHTML = '';
+// ============================================
+// API CONFIGURATION
+// ============================================
 
-    conversations.forEach((conv, index) => {
-        const recentItem = document.createElement('div');
-        recentItem.className = `recent-item ${conv.id === currentConversationId ? 'active' : ''}`;
-        recentItem.innerHTML = `
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-            <span>${conv.title || `Conversa ${index + 1}`}</span>
-        `;
-        recentItem.addEventListener('click', () => openConversation(conv.id));
-        recentItemsContainer.appendChild(recentItem);
-    });
-}
+// ⚠️ IMPORTANTE: Nunca exponha sua API key diretamente!
+// Use uma das seguintes opções:
 
-function openConversation(conversationId) {
-    currentConversationId = conversationId;
-    const conversation = conversations.find(c => c.id === conversationId);
-    const messagesArea = document.getElementById('messagesArea');
-    messagesArea.innerHTML = '';
+// Opção 1: Configuração pelo usuário (primeira execução)
+let MISTRAL_API_KEY = localStorage.getItem('sena_api_key') || '';
 
-    if (conversation && conversation.messages) {
-        conversation.messages.forEach(msg => {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${msg.sender}`;
-            messageDiv.innerHTML = `
-                <div class="message-avatar ${msg.sender}"></div>
-                <div class="message-content">${msg.text}</div>
-            `;
-            messagesArea.appendChild(messageDiv);
-        });
+// Função para configurar a API key
+function setupApiKey() {
+    if (!MISTRAL_API_KEY) {
+        const key = prompt(
+            '🔑 Para usar a SENA, você precisa de uma API key da Mistral AI.\n\n' +
+            '1. Acesse: https://console.mistral.ai/\n' +
+            '2. Crie uma conta gratuita\n' +
+            '3. Gere uma API key\n' +
+            '4. Cole a key abaixo:\n\n' +
+            '(A key ficará salva no seu navegador)'
+        );
+        
+        if (key && key.trim()) {
+            MISTRAL_API_KEY = key.trim();
+            localStorage.setItem('sena_api_key', MISTRAL_API_KEY);
+            return true;
+        } else {
+            alert('❌ API key não fornecida. A SENA não poderá funcionar sem ela.');
+            return false;
+        }
     }
-
-    renderConversations();
-    document.querySelector('.sidebar').classList.add('collapsed');
+    return true;
 }
 
-function startNewConversation() {
-    const newConversation = {
-        id: Date.now().toString(),
-        title: '',
-        messages: []
+// Função para resetar a API key
+function resetApiKey() {
+    if (confirm('Deseja remover a API key salva? Você precisará configurar uma nova.')) {
+        localStorage.removeItem('sena_api_key');
+        MISTRAL_API_KEY = '';
+        location.reload();
+    }
+}
+
+// ============================================
+// API ENDPOINTS
+// ============================================
+
+const API_CONFIG = {
+    // Opção A: Chamar Mistral diretamente (requer API key configurada)
+    mistral: {
+        url: 'https://api.mistral.ai/v1/chat/completions',
+        model: 'mistral-large-latest',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': () => `Bearer ${MISTRAL_API_KEY}`
+        }
+    },
+    
+    // Opção B: Usar seu próprio backend como proxy (mais seguro)
+    // Descomente e configure se você tiver um backend
+    /*
+    proxy: {
+        url: 'https://sua-api.vercel.app/api/chat',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    */
+};
+
+// Endpoint ativo (mude para 'proxy' se estiver usando backend)
+const ACTIVE_ENDPOINT = 'mistral';
+
+// ============================================
+// APP CONFIGURATION
+// ============================================
+
+const APP_CONFIG = {
+    name: 'SENA',
+    version: '2.0.0',
+    author: 'Orpheo Studio',
+    
+    // URLs
+    urls: {
+        terms: 'https://termos.orpheostudio.com.br',
+        privacy: 'https://políticas.orpheostudio.com.br',
+        support: 'mailto:sac.studiotsukiyo@outlook.com',
+        github: 'https://github.com/orpheostudio',
+        instagram: 'https://instagram.com/orpheostudio'
+    },
+    
+    // Chat settings
+    chat: {
+        maxTokens: 1024,
+        temperature: 0.7,
+        maxHistoryLength: 20, // Limite de mensagens no histórico
+        typingSpeed: 30 // ms por caractere (para efeito de digitação)
+    },
+    
+    // Voice settings
+    voice: {
+        rate: 0.95,
+        pitch: 1.05,
+        volume: 1.0
+    },
+    
+    // Storage keys
+    storage: {
+        apiKey: 'sena_api_key',
+        darkMode: 'sena_dark_mode',
+        language: 'sena_language',
+        conversationHistory: 'sena_conversation',
+        acceptedTerms: 'sena_terms_accepted'
+    },
+    
+    // Analytics
+    analytics: {
+        clarityId: 'YOUR_CLARITY_ID', // Substitua pelo seu ID do Microsoft Clarity
+        enabled: true
+    }
+};
+
+// ============================================
+// FEATURE FLAGS
+// ============================================
+
+const FEATURES = {
+    voiceInput: true,
+    voiceOutput: true,
+    darkMode: true,
+    multiLanguage: true,
+    conversationHistory: true,
+    analytics: true,
+    pwa: true
+};
+
+// ============================================
+// VALIDATION
+// ============================================
+
+function validateApiKey(key) {
+    // Validação básica do formato da API key da Mistral
+    return key && key.length > 20 && !key.includes(' ');
+}
+
+function getApiConfig() {
+    const config = API_CONFIG[ACTIVE_ENDPOINT];
+    
+    if (ACTIVE_ENDPOINT === 'mistral' && !MISTRAL_API_KEY) {
+        throw new Error('API key não configurada');
+    }
+    
+    return {
+        url: config.url,
+        headers: typeof config.headers.Authorization === 'function' 
+            ? { ...config.headers, Authorization: config.headers.Authorization() }
+            : config.headers,
+        model: config.model
     };
-    conversations.unshift(newConversation);
-    currentConversationId = newConversation.id;
-    localStorage.setItem('conversations', JSON.stringify(conversations));
-    openConversation(currentConversationId);
-    renderConversations();
 }
 
-function sendMessage() {
-    const messageInput = document.getElementById('messageInput');
-    const message = messageInput.value.trim();
-    if (!message) return;
+// ============================================
+// HELPERS
+// ============================================
 
-    const conversation = conversations.find(c => c.id === currentConversationId);
-    if (!conversation) return;
-
-    // Adiciona mensagem do usuário
-    conversation.messages.push({ sender: 'user', text: message });
-    renderConversationMessages();
-
-    // Chama a API do Yume
-    callYumeAPI(message)
-        .then(response => {
-            conversation.messages.push({ sender: 'assistant', text: response });
-            localStorage.setItem('conversations', JSON.stringify(conversations));
-            renderConversationMessages();
-        })
-        .catch(error => {
-            console.error("Erro ao chamar a API:", error);
-            conversation.messages.push({ sender: 'assistant', text: "Desculpe, ocorreu um erro ao processar sua mensagem." });
-            localStorage.setItem('conversations', JSON.stringify(conversations));
-            renderConversationMessages();
-        });
-
-    messageInput.value = '';
-    document.getElementById('charCounter').textContent = '0/2000';
-    document.getElementById('sendButton').disabled = true;
+function trackEvent(eventName, data = {}) {
+    if (FEATURES.analytics && typeof clarity === 'function') {
+        clarity('event', eventName, data);
+    }
+    
+    console.log(`📊 Event: ${eventName}`, data);
 }
 
-function renderConversationMessages() {
-    const conversation = conversations.find(c => c.id === currentConversationId);
-    const messagesArea = document.getElementById('messagesArea');
-    messagesArea.innerHTML = '';
-
-    if (conversation && conversation.messages) {
-        conversation.messages.forEach(msg => {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${msg.sender}`;
-            messageDiv.innerHTML = `
-                <div class="message-avatar ${msg.sender}"></div>
-                <div class="message-content">${msg.text}</div>
-            `;
-            messagesArea.appendChild(messageDiv);
+function trackError(error, context = '') {
+    console.error(`❌ Error [${context}]:`, error);
+    
+    if (FEATURES.analytics && typeof clarity === 'function') {
+        clarity('event', 'error', {
+            message: error.message,
+            context: context
         });
     }
 }
 
-// Inicialização
-document.addEventListener('DOMContentLoaded', () => {
-    // Welcome Modal
-    const welcomeModal = document.getElementById('welcomeModal');
-    const startButton = document.getElementById('startButton');
-    const termsCheckbox = document.getElementById('termsCheckbox');
+// ============================================
+// EXPORTS
+// ============================================
 
-    termsCheckbox.addEventListener('change', () => {
-        startButton.disabled = !termsCheckbox.checked;
-    });
+// Disponibilizar configurações globalmente
+window.SENA_CONFIG = {
+    APP_CONFIG,
+    API_CONFIG,
+    FEATURES,
+    setupApiKey,
+    resetApiKey,
+    getApiConfig,
+    validateApiKey,
+    trackEvent,
+    trackError
+};
 
-    startButton.addEventListener('click', () => {
-        welcomeModal.style.display = 'none';
-        if (conversations.length === 0) {
-            startNewConversation();
-        }
-    });
-
-    // Sidebar Toggle
-    const menuButton = document.getElementById('menuButton');
-    const sidebar = document.querySelector('.sidebar');
-
-    menuButton.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-    });
-
-    // Nova conversa
-    document.getElementById('newChatButton').addEventListener('click', startNewConversation);
-
-    // Envio de mensagem
-    const messageInput = document.getElementById('messageInput');
-    const sendButton = document.getElementById('sendButton');
-
-    messageInput.addEventListener('input', () => {
-        const length = messageInput.value.length;
-        document.getElementById('charCounter').textContent = `${length}/2000`;
-        sendButton.disabled = length === 0;
-    });
-
-    messageInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            if (!sendButton.disabled) {
-                sendMessage();
-            }
-        }
-    });
-
-    sendButton.addEventListener('click', sendMessage);
-
-    // Inicializa com uma conversa vazia
-    if (conversations.length === 0) {
-        startNewConversation();
-    } else {
-        currentConversationId = conversations[0].id;
-        openConversation(currentConversationId);
-    }
-
-    renderConversations();
-});
+console.log('🌸 SENA Config carregado - v' + APP_CONFIG.version);
