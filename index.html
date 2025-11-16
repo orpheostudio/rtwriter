@@ -2,37 +2,41 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#7C3AED">
-    <meta name="description" content="SENA - Assistente digital com alma gentil. Tecnologia acessível para todos.">
-    
-    <!-- SEO -->
-    <meta name="keywords" content="assistente virtual, IA, tecnologia acessível, chatbot, Orpheo Studio">
-    <meta name="author" content="Orpheo Studio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="NEXIA 3.0 - O Assistente de IA Mais Avançado. Interface Neural, Processamento Quântico e Inteligência Contextual.">
+    <meta name="keywords" content="IA Avançada, Assistente Neural, AmplaAI, NEXIA, Inteligência Artificial, Machine Learning">
+    <meta name="author" content="AmplaAI">
+    <meta name="theme-color" content="#6a00ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="SENA - Tecnologia com alma gentil">
-    <meta property="og:description" content="Assistente digital que torna a tecnologia simples e acessível para todos">
-    <meta property="og:image" content="https://i.imgur.com/5watJQF.png">
     <meta property="og:type" content="website">
+    <meta property="og:title" content="NEXIA 3.0 - Assistente Neural Avançado">
+    <meta property="og:description" content="Experiência de IA revolucionária com processamento neural">
+    <meta property="og:image" content="/og-image.jpg">
     
-    <!-- Manifest PWA -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NEXIA 3.0">
+    <meta name="twitter:description" content="O futuro da IA chegou">
+    
+    <title>NEXIA 3.0 - Neural AI Assistant | AmplaAI</title>
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.mistral.ai">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PWA -->
     <link rel="manifest" href="manifest.json">
-    
-    <!-- Ícones -->
-    <link rel="icon" type="image/png" href="https://i.imgur.com/5watJQF.png">
-    <link rel="apple-touch-icon" type="image/png" href="https://i.imgur.com/5watJQF.png">
-    
-    <title>SENA - Tecnologia com alma gentil</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Estilos -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
     
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
@@ -40,234 +44,833 @@
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "YOUR_CLARITY_ID");
+        })(window, document, "clarity", "script", "CLARITY_ID");
     </script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ADSENSE_CLIENT_ID" crossorigin="anonymous"></script>
 </head>
-<body class="transition-colors duration-300 bg-gradient-to-br from-purple-50 via-pink-50 to-purple-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-gray-900">
-
-<!-- Language Selection Modal -->
-<div id="languageModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-    <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 max-w-md w-full">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">🌍 Escolha seu idioma</h2>
-        <p class="text-gray-600 dark:text-gray-300 mb-6 text-center">Select your language | Seleccione su idioma</p>
-
-        <div class="space-y-3">
-            <button onclick="selectLanguage('pt')" class="w-full flex items-center gap-3 p-4 rounded-xl bg-purple-50 dark:bg-purple-900/30 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-colors">
-                <span class="text-3xl">🇧🇷</span>
-                <div class="text-left">
-                    <div class="font-semibold text-gray-900 dark:text-white">Português</div>
-                    <div class="text-sm text-gray-600 dark:text-gray-400">Brasil</div>
+<body class="dark-mode" data-version="3.0">
+    
+    <!-- Neural Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="neural-loader">
+                <div class="neural-ring"></div>
+                <div class="neural-ring"></div>
+                <div class="neural-ring"></div>
+                <div class="neural-core"></div>
+            </div>
+            <h2 class="loading-text">
+                <span class="text-gradient">NEXIA 3.0</span>
+            </h2>
+            <p class="loading-subtext">Inicializando rede neural...</p>
+            <div class="loading-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Neurônios:</span>
+                   <span class="stat-value" id="loadNeurons">0</span>
                 </div>
-            </button>
-
-            <button onclick="selectLanguage('en')" class="w-full flex items-center gap-3 p-4 rounded-xl bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                <span class="text-3xl">🇺🇸</span>
-                <div class="text-left">
-                    <div class="font-semibold text-gray-900 dark:text-white">English</div>
-                    <div class="text-sm text-gray-600 dark:text-gray-400">United States</div>
+                <div class="stat-item">
+                    <span class="stat-label">Sinapses:</span>
+                    <span class="stat-value" id="loadSynapses">0</span>
                 </div>
-            </button>
-
-            <button onclick="selectLanguage('es')" class="w-full flex items-center gap-3 p-4 rounded-xl bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                <span class="text-3xl">🇪🇸</span>
-                <div class="text-left">
-                    <div class="font-semibold text-gray-900 dark:text-white">Español</div>
-                    <div class="text-sm text-gray-600 dark:text-gray-400">España</div>
-                </div>
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- Welcome Screen -->
-<div id="welcomeScreen" class="hidden min-h-screen flex items-center justify-center p-4">
-    <div class="max-w-2xl w-full bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 transition-colors">
-        <div class="text-center mb-8">
-            <div class="flex items-center justify-center mb-6">
-                <div class="w-32 h-32 rounded-full bg-sena-gradient flex items-center justify-center sena-avatar shadow-2xl">
-                    <img src="https://i.imgur.com/5watJQF.png" alt="Logo Sena" class="w-24 h-24 object-contain">
+                <div class="stat-item">
+                    <span class="stat-label">Módulos:</span>
+                    <span class="stat-value" id="loadModules">0/12</span>
                 </div>
             </div>
-            <h1 class="text-6xl font-bold mb-3">
-                <span class="bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">SENA</span>
-            </h1>
-            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8" id="welcomeTagline">Tecnologia com alma gentil.</p>
-            <p class="text-gray-600 dark:text-gray-400 mb-6" id="welcomeDescription">Olá! Eu sou a Sena, sua assistente digital. Estou aqui para tornar a tecnologia simples e acessível para você. Vamos começar?</p>
-        </div>
-
-        <div class="bg-purple-50 dark:bg-purple-900/20 rounded-2xl p-6 mb-6">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3" id="welcomeFeaturesTitle">✨ O que posso fazer por você:</h2>
-            <ul class="space-y-2 text-gray-700 dark:text-gray-300 text-sm" id="welcomeFeaturesList">
-                <li>📚 Explicar conceitos de tecnologia de forma simples</li>
-                <li>📅 Ajudar na organização do seu dia a dia</li>
-                <li>💡 Responder perguntas sobre diversos assuntos</li>
-                <li>🎯 Criar lembretes e sugestões personalizadas</li>
-                <li>🗣️ Conversar por voz (clique no microfone)</li>
-            </ul>
-        </div>
-
-        <div class="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 rounded-2xl p-4 mb-6">
-            <p class="text-sm text-yellow-800 dark:text-yellow-200" id="welcomeDisclaimer">
-                ⚠️ <strong>Aviso:</strong> Sou uma inteligência artificial e posso cometer erros. Sempre verifique informações importantes em fontes confiáveis.
-            </p>
-        </div>
-
-        <div class="mb-6">
-            <label class="flex items-start gap-3 cursor-pointer">
-                <input type="checkbox" id="termsCheckbox" class="mt-1 w-5 h-5 text-purple-500 rounded focus:ring-2 focus:ring-purple-400">
-                <span class="text-sm text-gray-700 dark:text-gray-300" id="welcomeTerms">
-                    Ao usar, eu concordo com os <a href="https://termos.orpheostudio.com.br" target="_blank" class="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300">Termos de Uso</a> e <a href="https://políticas.orpheostudio.com.br" target="_blank" class="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300">Políticas de Privacidade</a> da Orpheo Studio.
-                </span>
-            </label>
-        </div>
-
-        <button onclick="startChat()" id="startButton" disabled
-                class="w-full bg-sena-gradient hover:opacity-90 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-2xl transition-all transform hover:scale-105 disabled:hover:scale-100 shadow-lg">
-            Começar a conversar 🌸
-        </button>
-
-        <p class="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">
-            Desenvolvido por <strong>Orpheo Studio</strong>
-        </p>
-    </div>
-</div>
-
-<!-- Main Chat Interface -->
-<div id="chatInterface" class="hidden min-h-screen p-4">
-    <div class="max-w-4xl mx-auto">
-        <!-- Header with Controls -->
-        <div class="flex justify-between items-center mb-6">
-            <div class="text-center flex-1">
-                <div class="flex items-center justify-center mb-2">
-                    <div class="w-20 h-20 rounded-full bg-sena-gradient flex items-center justify-center sena-avatar shadow-xl">
-                        <img src="https://i.imgur.com/5watJQF.png" alt="Logo Sena" class="w-16 h-16 object-contain">
-                    </div>
-                </div>
-                <h1 class="text-4xl font-bold">
-                    <span class="bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">SENA</span>
-                </h1>
-                <p class="text-gray-600 dark:text-gray-300" id="headerTagline">Tecnologia com alma gentil</p>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loadProgress"></div>
+                <div class="loading-glow"></div>
             </div>
-
-            <div class="flex gap-2 flex-wrap justify-end">
-                <!-- Language Switcher -->
-                <div class="relative">
-                    <button onclick="toggleLanguageMenu()" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all" title="Mudar idioma">
-                        <span id="currentFlag" class="text-2xl">🇧🇷</span>
+        </div>
+    </div>
+    
+    <!-- Neural Background -->
+    <div class="neural-bg">
+        <canvas id="neuralCanvas"></canvas>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="gradient-orb orb-4"></div>
+    </div>
+    
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar collapsed">
+        <div class="sidebar-header">
+            <button id="sidebarToggle" class="sidebar-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M3 12h18M3 6h18M3 18h18" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <h3 class="sidebar-title">Conversas</h3>
+        </div>
+        
+        <div class="sidebar-content">
+            <button class="new-chat-btn" id="newChatBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 5v14M5 12h14" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>Nova Conversa</span>
+            </button>
+            
+            <div class="chat-history" id="chatHistory">
+                <!-- Dynamic chat history items -->
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="7" r="4" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="user-info">
+                    <p class="user-name">Usuário</p>
+                    <p class="user-status">Premium</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Main Container -->
+    <div class="main-container">
+        
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button id="menuToggle" class="icon-btn menu-toggle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M3 12h18M3 6h18M3 18h18" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
                     </button>
-                    <div id="languageMenu" class="hidden absolute right-0 mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-2 z-10 min-w-[150px]">
-                        <button onclick="changeLanguage('pt')" class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                            <span class="text-xl">🇧🇷</span>
-                            <span class="text-sm text-gray-700 dark:text-gray-300">Português</span>
-                        </button>
-                        <button onclick="changeLanguage('en')" class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                            <span class="text-xl">🇺🇸</span>
-                            <span class="text-sm text-gray-700 dark:text-gray-300">English</span>
-                        </button>
-                        <button onclick="changeLanguage('es')" class="w-full flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                            <span class="text-xl">🇪🇸</span>
-                            <span class="text-sm text-gray-700 dark:text-gray-300">Español</span>
-                        </button>
-                    </div>
-                </div>
-
-                <button onclick="toggleDarkMode()" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all" title="Alternar modo escuro">
-                    <svg id="darkModeIcon" class="w-6 h-6 text-gray-700 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                </button>
-
-                <button onclick="reportBug()" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all" title="Reportar bug">
-                    <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- Chat Container -->
-        <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden transition-colors">
-            <!-- Chat Header -->
-            <div class="bg-sena-gradient p-6 relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20"></div>
-                <div class="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16"></div>
-
-                <div class="flex items-center justify-between relative z-10">
-                    <div class="flex items-center gap-4">
-                        <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center sena-avatar shadow-lg border-2 border-white/30" id="senaAvatarContainer">
-                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
-                                <img src="https://i.imgur.com/5watJQF.png" alt="Logo Sena" class="w-10 h-10 object-contain">
+                    
+                    <div class="logo-section">
+                        <div class="logo-container">
+                            <div class="logo-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="logo-svg">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <div class="logo-pulse"></div>
+                            </div>
+                            <div class="status-indicator">
+                                <span class="status-dot"></span>
                             </div>
                         </div>
-                        <div>
-                            <h2 class="text-lg font-semibold text-white flex items-center gap-2">
-                                SENA
-                                <span id="statusIndicator" class="w-2 h-2 bg-green-300 rounded-full pulse-dot shadow-lg"></span>
-                            </h2>
-                            <p class="text-sm text-white/90" id="statusText">MiraAI Conectada</p>
+                        <div class="logo-text">
+                            <h1>NEXIA <span class="version-badge">v3.0</span></h1>
+                            <p class="slogan">
+                                <span class="neural-text" id="neuralStatus">Neural Network Active</span>
+                                <span class="separator">•</span>
+                                <span class="mode-indicator-inline" id="currentModeDisplay">Modo Geral</span>
+                            </p>
                         </div>
                     </div>
-
-                    <button onclick="toggleVoiceMode()" id="voiceToggle" class="p-3 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm transition-all shadow-lg border border-white/30" title="Ativar modo de voz">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
-                        </svg>
-                    </button>
                 </div>
-            </div>
-
-            <!-- Messages Container -->
-            <div id="messagesContainer" class="h-96 overflow-y-auto p-6 space-y-4 scroll-smooth">
-                <!-- Messages will be loaded here -->
-            </div>
-
-            <!-- Input Area -->
-            <div class="border-t border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 transition-colors">
-                <div class="flex gap-2 items-end">
-                    <button onclick="startVoiceInput()" id="micButton" class="p-3 rounded-2xl bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 hover:from-purple-200 hover:to-blue-200 dark:hover:from-purple-900/50 dark:hover:to-blue-900/50 transition-all shadow-sm" title="Falar com Sena">
-                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
-                        </svg>
-                    </button>
-
-                    <input type="text" id="messageInput" placeholder="Digite sua pergunta..." 
-                           class="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-2xl px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-600 transition-all shadow-sm"
-                           onkeypress="handleKeyPress(event)">
-
-                    <button onclick="sendMessage()" id="sendButton" class="bg-sena-gradient hover:opacity-90 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-2xl p-3 transition-all shadow-lg">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                        </svg>
-                    </button>
-                </div>
-
-                <div id="voiceIndicator" class="hidden mt-3 flex items-center justify-center gap-2">
-                    <div class="flex items-center gap-1">
-                        <div class="w-1 h-4 bg-gradient-to-b from-cyan-400 to-purple-600 rounded voice-wave" style="animation-delay: 0s"></div>
-                        <div class="w-1 h-4 bg-gradient-to-b from-cyan-400 to-purple-600 rounded voice-wave" style="animation-delay: 0.1s"></div>
-                        <div class="w-1 h-4 bg-gradient-to-b from-cyan-400 to-purple-600 rounded voice-wave" style="animation-delay: 0.2s"></div>
+                
+                <div class="header-center">
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" data-action="summarize" title="Resumir conversa">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-width="2"/>
+                                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <button class="quick-action-btn" data-action="translate" title="Traduzir">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <button class="quick-action-btn" data-action="code" title="Gerar código">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="16 18 22 12 16 6" stroke-width="2" stroke-linecap="round"/>
+                                <polyline points="8 6 2 12 8 18" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <button class="quick-action-btn" data-action="analyze" title="Análise profunda">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                                <path d="M21 21l-4.35-4.35" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
                     </div>
-                    <span class="text-sm ml-2 bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent font-medium" id="listeningText">Ouvindo...</span>
+                </div>
+                
+                <div class="header-right">
+                    <div class="ai-metrics">
+                        <div class="metric-item">
+                            <span class="metric-label">Precisão</span>
+                            <span class="metric-value" id="aiPrecision">98%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Tokens</span>
+                            <span class="metric-value" id="tokenCount">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="header-controls">
+                        <!-- Voice Control -->
+                        <button id="voiceBtn" class="icon-btn" title="Controle de voz (V)">
+                            <svg class="icon-voice" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" stroke-width="2"/>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span class="voice-indicator"></span>
+                        </button>
+                        
+                        <!-- Sound Toggle -->
+                        <button id="soundBtn" class="icon-btn" title="Som (S)">
+                            <svg class="icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <svg class="icon-sound-off hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Settings -->
+                        <button id="settingsBtn" class="icon-btn" title="Configurações">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="3" stroke-width="2"/>
+                                <path d="M12 1v6m0 6v10M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h10M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Export -->
+                        <button id="exportBtn" class="icon-btn" title="Exportar (E)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Theme Toggle -->
+                        <button id="themeToggle" class="icon-btn theme-toggle" title="Tema (T)">
+                            <svg class="sun-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="5" stroke-width="2"/>
+                                <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m12.72-12.72l1.42-1.42" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Mode Menu -->
+                        <button id="menuBtn" class="icon-btn mode-menu-btn" title="Modos (M)">
+                            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="1" stroke-width="2"/>
+                                <circle cx="12" cy="5" r="1" stroke-width="2"/>
+                                <circle cx="12" cy="19" r="1" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+            
+            <!-- Mode Menu Dropdown -->
+            <div id="modeMenu" class="mode-menu-dropdown hidden">
+                <div class="mode-menu-header">
+                    <h3>Modos de IA</h3>
+                    <p>Selecione o modo ideal para sua necessidade</p>
+                </div>
+                <div class="mode-grid">
+                    <button class="mode-btn active" data-mode="general">
+                        <div class="mode-icon-wrapper">
+                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="mode-content">
+                            <span class="mode-name">Geral</span>
+                            <span class="mode-desc">Assistência completa e versátil</span>
+                        </div>
+                        <div class="mode-badge">Padrão</div>
+                    </button>
+                    
+                    <button class="mode-btn" data-mode="creative">
+                        <div class="mode-icon-wrapper">
+                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="mode-content">
+                            <span class="mode-name">Criativo</span>
+                            <span class="mode-desc">Ideias inovadoras e originais</span>
+                        </div>
+                    </button>
+                    
+                    <button class="mode-btn" data-mode="technical">
+                        <div class="mode-icon-wrapper">
+                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="16 18 22 12 16 6" stroke-width="2" stroke-linecap="round"/>
+                                <polyline points="8 6 2 12 8 18" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="mode-content">
+                            <span class="mode-name">Técnico</span>
+                            <span class="mode-desc">Precisão e expertise técnica</span>
+                        </div>
+                    </button>
+                    
+                    <button class="mode-btn" data-mode="explain">
+                        <div class="mode-icon-wrapper">
+                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="mode-content">
+                            <span class="mode-name">Explicativo</span>
+                            <span class="mode-desc">Ensino claro e didático</span>
+                        </div>
+                    </button>
+                    
+                    <button class="mode-btn" data-mode="translator">
+                        <div class="mode-icon-wrapper">
+                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="mode-content">
+                            <span class="mode-name">Tradutor</span>
+                            <span class="mode-desc">50+ idiomas com contexto</span>
+                        </div>
+                    </button>
+                    
+                    <button class="mode-btn" data-mode="analyst">
+                        <div class="mode-icon-wrapper">
+                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="mode-content">
+                            <span class="mode-name">Analista</span>
+                            <span class="mode-desc">Análise profunda de dados</span>
+                        </div>
+                        <div class="mode-badge">Pro</div>
+                    </button>
+                    
+                    <button class="mode-btn" data-mode="writer">
+                        <div class="mode-icon-wrapper">
+                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 19l7-7 3 3-7 7-3-3z" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M2 2l7.586 7.586" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="mode-content">
+                            <span class="mode-name">Escritor</span>
+                            <span class="mode-desc">Criação de conteúdo premium</span>
+                        </div>
+                    </button>
+                    
+                    <button class="mode-btn" data-mode="coach">
+                        <div class="mode-icon-wrapper">
+                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="9" cy="7" r="4" stroke-width="2"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="mode-content">
+                            <span class="mode-name">Coach</span>
+                            <span class="mode-desc">Mentoria e desenvolvimento</span>
+                        </div>
+                        <div class="mode-badge">Beta</div>
+                    </button>
+                </div>
+            </div>
+        </header>
 
-        <!-- Footer -->
-        <div class="text-center mt-6 space-y-2">
-            <p class="text-sm text-gray-600 dark:text-gray-400" id="footerTagline">As respostas da Sena utilizam MiraAI by Orpheo Studio. 🌸</p>
-            <p class="text-xs text-gray-500 dark:text-gray-500" id="footerDisclaimer">
-                Sena pode cometer erros. Verifique informações importantes. | 
-                <a href="https://termos.orpheostudio.com.br" target="_blank" class="underline hover:text-purple-600 dark:hover:text-purple-400">Termos de Uso</a> | 
-                <a href="https://políticas.orpheostudio.com.br" target="_blank" class="underline hover:text-purple-600 dark:hover:text-purple-400">Privacidade</a>
-            </p>
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+            <!-- Suggestions (shown when empty) -->
+            <div id="suggestions" class="suggestions-grid">
+                <div class="suggestion-card" data-prompt="Explique inteligência artificial de forma simples">
+                    <div class="suggestion-icon">🤖</div>
+                    <p class="suggestion-text">Explique IA de forma simples</p>
+                </div>
+                <div class="suggestion-card" data-prompt="Crie um plano de estudos personalizado">
+                    <div class="suggestion-icon">📚</div>
+                    <p class="suggestion-text">Plano de estudos personalizado</p>
+                </div>
+                <div class="suggestion-card" data-prompt="Analise este código e sugira melhorias">
+                    <div class="suggestion-icon">💻</div>
+                    <p class="suggestion-text">Análise de código</p>
+                </div>
+                <div class="suggestion-card" data-prompt="Resuma as principais notícias de tecnologia">
+                    <div class="suggestion-icon">📰</div>
+                    <p class="suggestion-text">Resumo de notícias tech</p>
+                </div>
+            </div>
+            
+            <div id="chatMessages" class="chat-messages"></div>
+            
+            <!-- Typing Indicator -->
+            <div id="typingIndicator" class="typing-indicator hidden">
+                <div class="typing-bubble">
+                    <div class="neural-thinking">
+                        <div class="neural-pulse"></div>
+                        <div class="neural-pulse"></div>
+                        <div class="neural-pulse"></div>
+                    </div>
+                    <span class="typing-text">NEXIA está processando...</span>
+                </div>
+            </div>
+            
+            <!-- Scroll to Bottom Button -->
+            <button id="scrollBottomBtn" class="scroll-bottom-btn hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 5v14M19 12l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="unread-count hidden" id="unreadCount">0</span>
+            </button>
+        </main>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <!-- Context Pills -->
+            <div id="contextPills" class="context-pills hidden">
+                <!-- Dynamic context pills -->
+            </div>
+            
+            <div class="input-wrapper">
+                <div class="input-container">
+                    <!-- File Preview -->
+                    <div id="filePreview" class="file-preview hidden">
+                        <!-- Dynamic file previews -->
+                    </div>
+                    
+                    <textarea 
+                        id="messageInput" 
+                        class="message-input" 
+                        placeholder="Digite sua mensagem ou use @ para comandos..."
+                        rows="1"
+                        autocomplete="off"
+                        spellcheck="true"
+                        maxlength="4000"
+                    ></textarea>
+                    
+                    <div class="input-actions">
+                        <button id="emojiBtn" class="input-action-btn" title="Emojis">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="9" y1="9" x2="9.01" y2="9" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="15" y1="9" x2="15.01" y2="9" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        
+                        <button id="attachBtn" class="input-action-btn" title="Anexar arquivo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <input type="file" id="fileInput" accept=".txt,.pdf,.doc,.docx,.jpg,.png" hidden>
+                        </button>
+                        
+                        <button id="cameraBtn" class="input-action-btn" title="Câmera">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" stroke-width="2"/>
+                                <circle cx="12" cy="13" r="4" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="input-divider"></div>
+                        
+                        <button id="micBtn" class="input-action-btn mic-btn" title="Voz para texto">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" stroke-width="2"/>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <button id="sendBtn" class="send-btn" title="Enviar (Ctrl+Enter)">
+                    <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="send-text">Enviar</span>
+                </button>
+            </div>
+            
+            <!-- Input Info Bar -->
+            <div class="input-info">
+                <div class="info-left">
+                    <span id="charCount" class="char-count">0 / 4000</span>
+                    <span class="separator">•</span>
+                    <span class="input-hint">
+                        <span id="quickTip">💡 Use @ para comandos rápidos</span>
+                    </span>
+                </div>
+                <div class="info-right">
+                    <span class="processing-status" id="processingStatus">
+                        <span class="status-dot"></span>
+                        Pronto
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Scripts -->
-<script src="js/translations.js"></script>
-<script src="js/config.js"></script>
-<script src="js/app.js"></script>
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content settings-modal">
+            <div class="modal-header">
+                <h2>Configurações</h2>
+                <button class="modal-close" id="closeSettings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M18 6L6 18M6 6l12 12" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>Aparência</h3>
+                    <div class="setting-item">
+                        <label>Tema</label>
+                        <div class="theme-selector">
+                            <button class="theme-option" data-theme="dark">
+                                <span class="theme-preview dark-preview"></span>
+                                Escuro
+                            </button>
+                            <button class="theme-option" data-theme="light">
+                                <span class="theme-preview light-preview"></span>
+                                Claro
+                            </button>
+                            <button class="theme-option" data-theme="auto">
+                                <span class="theme-preview auto-preview"></span>
+                                Auto
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label>Animações</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="animationsToggle" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>IA & Respostas</h3>
+                    <div class="setting-item">
+                        <label>Temperatura da IA</label>
+                        <input type="range" id="temperatureSlider" min="0" max="100" value="70" class="slider">
+                        <span class="slider-value" id="temperatureValue">0.7</span>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label>Tamanho máximo de resposta</label>
+                        <select id="maxTokensSelect" class="select-input">
+                            <option value="500">Curto (500 tokens)</option>
+                            <option value="1000" selected>Médio (1000 tokens)</option>
+                            <option value="2000">Longo (2000 tokens)</option>
+                            <option value="4000">Extra longo (4000 tokens)</option>
+                        </select>
+                        </div>
+                    
+                    <div class="setting-item">
+                        <label>Formatação de código</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="codeFormattingToggle" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label>Contexto da conversa</label>
+                        <select id="contextLengthSelect" class="select-input">
+                            <option value="5">5 mensagens</option>
+                            <option value="10" selected>10 mensagens</option>
+                            <option value="20">20 mensagens</option>
+                            <option value="50">50 mensagens</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Áudio & Notificações</h3>
+                    <div class="setting-item">
+                        <label>Sons do sistema</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="systemSoundsToggle" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label>Voz da IA (Text-to-Speech)</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="ttsToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label>Notificações desktop</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notificationsToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Privacidade & Dados</h3>
+                    <div class="setting-item">
+                        <label>Salvar histórico localmente</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="saveHistoryToggle" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <button class="danger-btn" id="clearAllData">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-width="2"/>
+                            </svg>
+                            Limpar todos os dados
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Avançado</h3>
+                    <div class="setting-item">
+                        <label>API Key da Mistral</label>
+                        <div class="input-with-button">
+                            <input type="password" id="apiKeyInput" class="text-input" placeholder="sk-...">
+                            <button class="icon-btn" id="toggleApiKey">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="3" stroke-width="2"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label>Modo desenvolvedor</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="devModeToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-secondary" id="resetSettings">Restaurar padrões</button>
+                <button class="btn-primary" id="saveSettings">Salvar alterações</button>
+            </div>
+        </div>
+    </div>
 
+    <!-- Command Palette -->
+    <div id="commandPalette" class="command-palette hidden">
+        <div class="command-palette-content">
+            <div class="command-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                    <path d="M21 21l-4.35-4.35" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <input type="text" id="commandSearch" placeholder="Buscar comandos...">
+                <kbd>Esc</kbd>
+            </div>
+            <div class="command-list" id="commandList">
+                <!-- Dynamic command list -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Context Menu -->
+    <div id="contextMenu" class="context-menu hidden">
+        <button class="context-menu-item" data-action="copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="9" y="9" width="13" height="13" rx="2" stroke-width="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-width="2"/>
+            </svg>
+            Copiar
+        </button>
+        <button class="context-menu-item" data-action="regenerate">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Regenerar
+        </button>
+        <button class="context-menu-item" data-action="edit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke-width="2"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke-width="2"/>
+            </svg>
+            Editar
+        </button>
+        <button class="context-menu-item" data-action="share">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="18" cy="5" r="3" stroke-width="2"/>
+                <circle cx="6" cy="12" r="3" stroke-width="2"/>
+                <circle cx="18" cy="19" r="3" stroke-width="2"/>
+                <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" stroke-width="2"/>
+            </svg>
+            Compartilhar
+        </button>
+        <div class="context-menu-divider"></div>
+        <button class="context-menu-item danger" data-action="delete">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-width="2"/>
+            </svg>
+            Deletar
+        </button>
+    </div>
+
+    <!-- Emoji Picker -->
+    <div id="emojiPicker" class="emoji-picker hidden">
+        <div class="emoji-search">
+            <input type="text" placeholder="Buscar emoji..." id="emojiSearch">
+        </div>
+        <div class="emoji-categories">
+            <button class="emoji-category active" data-category="recent">🕐</button>
+            <button class="emoji-category" data-category="smileys">😊</button>
+            <button class="emoji-category" data-category="people">👋</button>
+            <button class="emoji-category" data-category="nature">🌿</button>
+            <button class="emoji-category" data-category="food">🍕</button>
+            <button class="emoji-category" data-category="activity">⚽</button>
+            <button class="emoji-category" data-category="travel">✈️</button>
+            <button class="emoji-category" data-category="objects">💡</button>
+            <button class="emoji-category" data-category="symbols">❤️</button>
+        </div>
+        <div class="emoji-grid" id="emojiGrid">
+            <!-- Dynamic emoji list -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="mission">
+                    <div class="mission-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="mission-title">Missão AmplaAI</p>
+                        <p class="mission-text">Simplificar o acesso à tecnologia e ao conhecimento, transformando a forma como as pessoas interagem com o digital através de IA avançada.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-stats">
+                    <div class="stat-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-width="2"/>
+                        </svg>
+                        <div>
+                            <span class="stat-value" id="totalMessages">0</span>
+                            <span class="stat-label">Mensagens</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                            <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <div>
+                            <span class="stat-value" id="sessionTime">00:00</span>
+                            <span class="stat-label">Sessão</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <div>
+                            <span class="stat-value" id="totalTokens">0</span>
+                            <span class="stat-label">Tokens</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#termos" class="footer-link">Termos de Uso</a>
+                    <a href="#privacidade" class="footer-link">Privacidade</a>
+                    <a href="#api" class="footer-link">API</a>
+                    <a href="#docs" class="footer-link">Documentação</a>
+                    <a href="#status" class="footer-link">Status</a>
+                    <a href="#contato" class="footer-link">Contato</a>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" title="Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" title="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" title="Discord">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AdSense Block -->
+        <div class="ad-container">
+            <div class="ad-label">Publicidade</div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-ADSENSE_CLIENT_ID"
+                 data-ad-slot="0000000000"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">© 2024 AmplaAI • NEXIA v3.0 • Powered by Neural AI Technology • All rights reserved</p>
+            <div class="footer-badges">
+                <span class="badge">🔒 Seguro</span>
+                <span class="badge">⚡ Ultra-rápido</span>
+                <span class="badge">🌍 Global</span>
+                <span class="badge">🎯 Preciso</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+    <!-- AdSense Init -->
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </body>
 </html>
