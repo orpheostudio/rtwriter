@@ -2,875 +2,1364 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="NEXIA 3.0 - O Assistente de IA Mais Avançado. Interface Neural, Processamento Quântico e Inteligência Contextual.">
-    <meta name="keywords" content="IA Avançada, Assistente Neural, AmplaAI, NEXIA, Inteligência Artificial, Machine Learning">
-    <meta name="author" content="AmplaAI">
-    <meta name="theme-color" content="#6a00ff">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
-    <!-- Open Graph -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sion.ai — Plataforma de inteligência artificial focada em aprendizado, desenvolvimento e evolução contínua. Aprenda. Desenvolva. Evolua.">
+    <meta name="keywords" content="inteligência artificial, aprendizado, desenvolvimento, produtividade, IA, Sion.ai, Sena">
+    <meta name="author" content="Sion.ai">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sion.ai">
+
+    <meta property="og:title" content="Sion.ai — Aprenda. Desenvolva. Evolua.">
+    <meta property="og:description" content="IA que cresce com você. Plataforma focada em aprendizado, desenvolvimento e evolução contínua.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="NEXIA 3.0 - Assistente Neural Avançado">
-    <meta property="og:description" content="Experiência de IA revolucionária com processamento neural">
-    <meta property="og:image" content="/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="NEXIA 3.0">
-    <meta name="twitter:description" content="O futuro da IA chegou">
-    
-    <title>NEXIA 3.0 - Neural AI Assistant | AmplaAI</title>
-    
-    <!-- Preconnect -->
+    <meta property="og:url" content="https://sion.ai">
+
+    <title>Sion.ai — Aprenda. Desenvolva. Evolua.</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://api.mistral.ai">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="/icons/icon-192.png">
-    
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "CLARITY_ID");
-    </script>
-    
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ADSENSE_CLIENT_ID" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ─── RESET ─── */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ─── VARIABLES ─── */
+        :root {
+            --electric-blue: #00F0FF;
+            --deep-purple:   #7B2CBF;
+            --hot-pink:      #FF006E;
+            --neon-green:    #39FF14;
+            --cyber-yellow:  #FFD60A;
+
+            --bg-dark:       #0A0E27;
+            --bg-darker:     #050814;
+            --bg-card:       #131829;
+            --bg-elevated:   #1A1F3A;
+
+            --text-primary:  #FFFFFF;
+            --text-secondary:#B8C5D6;
+            --text-muted:    #6B7A99;
+
+            --gradient-hero: linear-gradient(135deg, var(--electric-blue), var(--deep-purple), var(--hot-pink));
+            --gradient-accent: linear-gradient(90deg, var(--hot-pink), var(--cyber-yellow));
+            --gradient-card: linear-gradient(180deg, var(--bg-card), var(--bg-elevated));
+
+            --glow-blue:  0 0 20px rgba(0,240,255,.3);
+            --glow-pink:  0 0 20px rgba(255,0,110,.3);
+            --shadow-lg:  0 20px 60px rgba(0,0,0,.5);
+        }
+
+        /* ─── BASE ─── */
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-darker);
+            overflow-x: hidden;
+        }
+
+        /* ─── GRID BG ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(0,240,255,.03) 1px, transparent 1px),
+                linear-gradient(0deg,  rgba(0,240,255,.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            animation: gridScroll 20s linear infinite;
+        }
+        @keyframes gridScroll {
+            to { transform: translateY(50px); }
+        }
+
+        /* ─── FLOATING ORBS ─── */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: .15;
+            pointer-events: none;
+            z-index: 1;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+        .orb-1 { width:400px; height:400px; background:var(--electric-blue); top:-200px; left:-200px; }
+        .orb-2 { width:500px; height:500px; background:var(--hot-pink);       bottom:-250px; right:-250px; animation-delay:5s; }
+        .orb-3 { width:300px; height:300px; background:var(--deep-purple);    top:50%; right:-150px; animation-delay:10s; }
+        @keyframes orbFloat {
+            0%,100% { transform: translate(0,0) scale(1); }
+            33%     { transform: translate(50px,-50px) scale(1.1); }
+            66%     { transform: translate(-30px,30px) scale(.9); }
+        }
+
+        /* ─── LAYOUT ─── */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10,14,39,.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0,240,255,.1);
+            transition: background .3s, box-shadow .3s;
+        }
+        header.scrolled {
+            background: rgba(10,14,39,.95);
+            box-shadow: 0 10px 30px rgba(0,0,0,.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* logo */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            text-decoration: none;
+            transition: transform .3s;
+        }
+        .logo-link:hover { transform: translateX(4px); }
+
+        .logo-svg {
+            width: 42px;
+            height: 42px;
+            filter: drop-shadow(var(--glow-blue));
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        @keyframes logoFloat {
+            0%,100% { transform: translateY(0); }
+            50%     { transform: translateY(-4px); }
+        }
+
+        .brand-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -.02em;
+        }
+
+        /* nav links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .92rem;
+            position: relative;
+            transition: color .3s;
+            letter-spacing: .4px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--gradient-accent);
+            transition: width .3s;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .cta-nav {
+            padding: .6rem 1.4rem;
+            background: var(--gradient-hero);
+            border-radius: 8px;
+            font-weight: 700;
+            color: #fff !important;
+            -webkit-text-fill-color: #fff !important;
+            box-shadow: var(--glow-blue);
+            transition: transform .3s, box-shadow .3s;
+        }
+        .cta-nav::after { display: none !important; }
+        .cta-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,240,255,.4);
+        }
+
+        /* mobile hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: .5rem;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 26px; height: 3px;
+            background: var(--electric-blue);
+            border-radius: 2px;
+            transition: all .3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px,6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 2rem 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text { animation: fadeUp 1s ease-out; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .45rem .9rem;
+            background: rgba(0,240,255,.1);
+            border: 1px solid rgba(0,240,255,.3);
+            border-radius: 50px;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--electric-blue);
+            margin-bottom: 1.8rem;
+            font-family: 'Space Mono', monospace;
+            animation: fadeUp 1s ease-out .15s both;
+        }
+        .hero-badge .dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--electric-blue);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity:1; }
+            50%     { opacity:.3; }
+        }
+
+        .hero h1 {
+            font-size: 4.4rem;
+            font-weight: 800;
+            line-height: 1.08;
+            margin-bottom: 1.4rem;
+            letter-spacing: -.03em;
+            animation: fadeUp 1s ease-out .25s both;
+        }
+        .gradient-text {
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2.2rem;
+            max-width: 560px;
+            animation: fadeUp 1s ease-out .38s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeUp 1s ease-out .5s both;
+        }
+
+        /* buttons */
+        .btn-primary {
+            padding: .95rem 2.2rem;
+            background: var(--gradient-hero);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--glow-blue);
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            transition: transform .3s, box-shadow .3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,240,255,.4);
+        }
+
+        .btn-secondary {
+            padding: .95rem 2.2rem;
+            background: rgba(255,255,255,.05);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: 2px solid rgba(255,255,255,.12);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            transition: all .3s;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,.1);
+            border-color: rgba(255,255,255,.3);
+            transform: translateY(-3px);
+        }
+
+        /* hero visual cards */
+        .hero-visual { animation: fadeUp 1s ease-out .6s both; }
+        .visual-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .float-card {
+            position: absolute;
+            background: var(--gradient-card);
+            border: 1px solid rgba(0,240,255,.2);
+            border-radius: 18px;
+            padding: 1.4rem 1.6rem;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+            animation: cardBob 6s ease-in-out infinite;
+            min-width: 140px;
+        }
+        .float-card:nth-child(1) { top:8%;  left:2%;  animation-delay:0s; }
+        .float-card:nth-child(2) { top:42%; right:0;  animation-delay:2s; }
+        .float-card:nth-child(3) { bottom:8%; left:18%; animation-delay:4s; }
+        @keyframes cardBob {
+            0%,100% { transform: translateY(0) rotate(0deg); }
+            50%     { transform: translateY(-18px) rotate(1.5deg); }
+        }
+        .fc-icon  { font-size: 1.8rem; margin-bottom: .3rem; }
+        .fc-label { font-size: .78rem; font-weight: 600; color: var(--text-secondary); font-family: 'Space Mono', monospace; }
+        .fc-value { font-size: 1.4rem; font-weight: 800; background: var(--gradient-accent); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+        /* ─── STATS ─── */
+        .stats-band {
+            padding: 60px 2rem;
+            background: var(--bg-dark);
+            border-top:    1px solid rgba(0,240,255,.1);
+            border-bottom: 1px solid rgba(0,240,255,.1);
+            position: relative; z-index:10;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Space Mono', monospace;
+            margin-bottom: .3rem;
+        }
+        .stat-label {
+            font-size: .95rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* ─── SECTIONS COMMON ─── */
+        section {
+            padding: 110px 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 780px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section-tag {
+            display: inline-block;
+            padding: .4rem .9rem;
+            background: rgba(255,0,110,.1);
+            border: 1px solid rgba(255,0,110,.3);
+            border-radius: 50px;
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--hot-pink);
+            margin-bottom: 1.2rem;
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+        }
+        .section-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            letter-spacing: -.02em;
+        }
+        .section-sub {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ─── SENA (produto principal) ─── */
+        #sena {
+            background:
+                radial-gradient(circle at 20% 50%, rgba(123,44,191,.08), transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0,240,255,.08), transparent 50%);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 1.8rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .feat-card {
+            background: var(--gradient-card);
+            border: 1px solid rgba(0,240,255,.15);
+            border-radius: 18px;
+            padding: 2.2rem;
+            transition: transform .4s, border-color .4s, box-shadow .4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .feat-card::before {
+            content:'';
+            position: absolute; inset:0;
+            background: linear-gradient(135deg, rgba(0,240,255,.06), transparent);
+            opacity: 0;
+            transition: opacity .4s;
+        }
+        .feat-card:hover::before { opacity:1; }
+        .feat-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--electric-blue);
+            box-shadow: 0 20px 50px rgba(0,240,255,.15);
+        }
+        .feat-icon { font-size: 2.4rem; margin-bottom: 1rem; display:block; position:relative; z-index:1; }
+        .feat-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: .7rem; position:relative; z-index:1; }
+        .feat-card p  { color: var(--text-secondary); font-size: .97rem; line-height:1.75; position:relative; z-index:1; }
+
+        .sena-cta { text-align:center; margin-top:3.5rem; }
+
+        /* ─── ECOSSISTEMA ─── */
+        .eco-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .eco-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,0,110,.18);
+            border-radius: 18px;
+            padding: 2.6rem;
+            transition: transform .4s, border-color .4s, box-shadow .4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .eco-card::after {
+            content:'';
+            position: absolute;
+            top:0; right:0;
+            width:180px; height:180px;
+            background: radial-gradient(circle, rgba(255,0,110,.08), transparent);
+            border-radius:50%;
+            transform: translate(40%,-40%);
+            pointer-events:none;
+        }
+        .eco-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--hot-pink);
+            box-shadow: 0 20px 50px rgba(255,0,110,.15);
+        }
+        .eco-status {
+            display: inline-block;
+            padding: .35rem .85rem;
+            border-radius: 50px;
+            font-size: .72rem;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 1.2rem;
+            position: relative; z-index:1;
+        }
+        .eco-status.active   { background: rgba(57,255,20,.1); border:1px solid rgba(57,255,20,.3); color: var(--neon-green); }
+        .eco-status.soon     { background: rgba(255,214,10,.1); border:1px solid rgba(255,214,10,.3); color: var(--cyber-yellow); }
+
+        .eco-card h3 { font-size: 1.7rem; font-weight: 800; margin-bottom: .8rem; position:relative; z-index:1; }
+        .eco-card p  { color: var(--text-secondary); line-height:1.8; margin-bottom:.6rem; position:relative; z-index:1; }
+
+        .eco-links { display:flex; gap:.8rem; margin-top:1.6rem; flex-wrap:wrap; position:relative; z-index:1; }
+        .eco-link {
+            padding: .55rem 1.2rem;
+            background: rgba(255,255,255,.05);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: .88rem;
+            border: 1px solid rgba(255,255,255,.1);
+            transition: all .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+        }
+        .eco-link:hover { background:rgba(255,255,255,.1); border-color:var(--hot-pink); transform:translateY(-2px); }
+        .eco-link.muted { opacity:.55; cursor:default; pointer-events:none; }
+
+        /* ─── JORNADA / TIMELINE ─── */
+        .timeline {
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 2.8rem;
+        }
+        .timeline::before {
+            content:'';
+            position: absolute;
+            left:0; top:0;
+            width:2px; height:100%;
+            background: linear-gradient(180deg, var(--electric-blue), var(--hot-pink));
+        }
+        .tl-item {
+            position: relative;
+            margin-bottom: 2.8rem;
+            padding-left: 1.8rem;
+        }
+        .tl-item::before {
+            content:'';
+            position: absolute;
+            left: -3.2rem; top: .35rem;
+            width:12px; height:12px;
+            border-radius:50%;
+            background: var(--electric-blue);
+            border: 3px solid var(--bg-darker);
+            box-shadow: var(--glow-blue);
+        }
+        .tl-date {
+            font-size: .82rem;
+            color: var(--hot-pink);
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            margin-bottom: .35rem;
+        }
+        .tl-item h3 { font-size: 1.3rem; font-weight:700; margin-bottom:.5rem; }
+        .tl-item p  { color: var(--text-secondary); line-height:1.8; font-size:.97rem; }
+
+        /* ─── SOBRE ─── */
+        .sobre-text {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .sobre-text p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.6rem;
+        }
+
+        .manifesto-block {
+            max-width: 640px;
+            margin: 4.5rem auto 0;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--gradient-card);
+            border: 1px solid rgba(0,240,255,.15);
+            border-radius: 20px;
+        }
+        .manifesto-block p {
+            font-size: 1.5rem !important;
+            color: var(--text-primary) !important;
+            line-height: 2 !important;
+            font-weight: 600;
+            margin-bottom: 0 !important;
+        }
+
+        /* team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 1.6rem;
+            max-width: 1200px;
+            margin: 3.5rem auto 0;
+        }
+        .team-card {
+            text-align: center;
+            padding: 2rem 1.2rem;
+            background: var(--gradient-card);
+            border: 1px solid rgba(0,240,255,.1);
+            border-radius: 18px;
+            transition: transform .3s, border-color .3s;
+        }
+        .team-card:hover { transform:translateY(-8px); border-color:var(--electric-blue); }
+        .team-avatar {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            background: var(--gradient-hero);
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            border: 3px solid var(--bg-darker);
+            box-shadow: var(--glow-blue);
+        }
+        .team-card h4   { font-size:1.05rem; font-weight:700; margin-bottom:.3rem; }
+        .team-card .role { font-size:.82rem; color:var(--text-muted); font-family:'Space Mono',monospace; }
+
+        /* ─── CONTATO ─── */
+        #contato {
+            background: radial-gradient(circle at 50% 50%, rgba(0,240,255,.04), transparent 70%);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: start;
+        }
+        .contact-list { display:flex; flex-direction:column; gap:1.2rem; }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            padding: 1.5rem;
+            background: var(--gradient-card);
+            border: 1px solid rgba(0,240,255,.1);
+            border-radius: 14px;
+            transition: border-color .3s, transform .3s;
+        }
+        .contact-item:hover { border-color:var(--electric-blue); transform:translateX(8px); }
+        .contact-item .ci-icon { font-size:1.6rem; }
+        .contact-item strong  { display:block; font-size:.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; font-family:'Space Mono',monospace; margin-bottom:.3rem; }
+        .contact-item a       { color:var(--text-primary); text-decoration:none; font-size:1.05rem; font-weight:600; transition:color .3s; }
+        .contact-item a:hover { color:var(--electric-blue); }
+
+        /* form */
+        .contact-form {
+            background: var(--gradient-card);
+            border: 1px solid rgba(0,240,255,.1);
+            border-radius: 18px;
+            padding: 2.4rem;
+        }
+        .form-group { margin-bottom:1.3rem; }
+        .form-group label {
+            display: block;
+            font-size: .88rem;
+            font-weight: 600;
+            margin-bottom: .4rem;
+            color: var(--text-secondary);
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: .9rem 1rem;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: 'Syne', sans-serif;
+            font-size: .97rem;
+            transition: border-color .3s, box-shadow .3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 0 3px rgba(0,240,255,.1);
+        }
+        .form-group textarea { resize:vertical; min-height:110px; }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--bg-darker);
+            border-top: 1px solid rgba(0,240,255,.1);
+            padding: 4rem 2rem 2rem;
+            margin-top: 60px;
+            position: relative;
+            z-index: 10;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto 2.5rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+        }
+        .footer-brand h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: .8rem;
+            background: var(--gradient-hero);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+        .footer-brand p { color:var(--text-secondary); line-height:1.7; margin-bottom:1.2rem; font-size:.95rem; }
+
+        .social-row { display:flex; gap:.7rem; }
+        .social-btn {
+            width:38px; height:38px;
+            border-radius:10px;
+            background:rgba(255,255,255,.05);
+            border:1px solid rgba(255,255,255,.1);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--text-primary);
+            text-decoration:none;
+            font-size:1.1rem;
+            transition:all .3s;
+        }
+        .social-btn:hover { background:var(--electric-blue); border-color:var(--electric-blue); transform:translateY(-2px); }
+
+        .footer-col h4 { font-size:.9rem; font-weight:700; margin-bottom:1.2rem; color:var(--text-primary); text-transform:uppercase; letter-spacing:.6px; }
+        .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+        .footer-col a  { color:var(--text-secondary); text-decoration:none; font-size:.9rem; transition:color .3s, transform .3s; display:inline-block; }
+        .footer-col a:hover { color:var(--electric-blue); transform:translateX(4px); }
+
+        .footer-bottom {
+            max-width:1200px;
+            margin:0 auto;
+            padding-top:1.8rem;
+            border-top:1px solid rgba(255,255,255,.08);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            color:var(--text-muted);
+            font-size:.85rem;
+        }
+
+        /* ─── SCROLL TOP ─── */
+        .scroll-top {
+            position:fixed;
+            bottom:2rem; right:2rem;
+            width:46px; height:46px;
+            background:var(--gradient-hero);
+            border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            color:#fff;
+            font-size:1.3rem;
+            cursor:pointer;
+            opacity:0; pointer-events:none;
+            transition:all .3s;
+            z-index:999;
+            box-shadow:var(--glow-blue);
+            border:none;
+        }
+        .scroll-top.visible { opacity:1; pointer-events:all; }
+        .scroll-top:hover   { transform:translateY(-4px); }
+
+        /* ─── FADE-IN (scroll reveal) ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── KEYFRAMES ─── */
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(28px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width:1100px) {
+            .hero h1        { font-size:3.4rem; }
+            .section-title  { font-size:2.8rem; }
+            .features-grid  { grid-template-columns:repeat(2,1fr); }
+            .team-grid      { grid-template-columns:repeat(2,1fr); }
+        }
+        @media (max-width:900px) {
+            .nav-links {
+                position:fixed; top:0; left:-100%;
+                width:100%; height:100vh;
+                background:rgba(10,14,39,.97);
+                backdrop-filter:blur(20px);
+                flex-direction:column;
+                justify-content:center; align-items:center;
+                gap:1.8rem;
+                transition:left .4s;
+                z-index:999;
+            }
+            .nav-links.open { left:0; }
+            .hamburger { display:flex; }
+
+            .hero-content { grid-template-columns:1fr; gap:2.5rem; }
+            .hero-visual  { order:-1; max-width:400px; margin:0 auto; }
+            .hero h1      { font-size:2.8rem; }
+            .section-title{ font-size:2.4rem; }
+            .features-grid{ grid-template-columns:1fr; }
+            .eco-grid     { grid-template-columns:1fr; }
+            .contact-grid { grid-template-columns:1fr; }
+            .footer-grid  { grid-template-columns:1fr 1fr; }
+            .stats-grid   { grid-template-columns:repeat(2,1fr); }
+        }
+        @media (max-width:580px) {
+            .hero         { padding:120px 1.4rem 60px; }
+            .hero h1      { font-size:2rem; }
+            section       { padding:80px 1.4rem; }
+            .section-title{ font-size:1.9rem; }
+            .stats-grid   { grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+            .stat-number  { font-size:2.2rem; }
+            .team-grid    { grid-template-columns:1fr 1fr; }
+            .footer-grid  { grid-template-columns:1fr; }
+            .footer-bottom{ flex-direction:column; gap:.6rem; text-align:center; }
+            .hero-cta     { flex-direction:column; }
+            .btn-primary, .btn-secondary { width:100%; justify-content:center; }
+        }
+    </style>
 </head>
-<body class="dark-mode" data-version="3.0">
-    
-    <!-- Neural Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="neural-loader">
-                <div class="neural-ring"></div>
-                <div class="neural-ring"></div>
-                <div class="neural-ring"></div>
-                <div class="neural-core"></div>
-            </div>
-            <h2 class="loading-text">
-                <span class="text-gradient">NEXIA 3.0</span>
-            </h2>
-            <p class="loading-subtext">Inicializando rede neural...</p>
-            <div class="loading-stats">
-                <div class="stat-item">
-                    <span class="stat-label">Neurônios:</span>
-                   <span class="stat-value" id="loadNeurons">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Sinapses:</span>
-                    <span class="stat-value" id="loadSynapses">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Módulos:</span>
-                    <span class="stat-value" id="loadModules">0/12</span>
-                </div>
-            </div>
-            <div class="loading-bar">
-                <div class="loading-progress" id="loadProgress"></div>
-                <div class="loading-glow"></div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Neural Background -->
-    <div class="neural-bg">
-        <canvas id="neuralCanvas"></canvas>
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
-        <div class="gradient-orb orb-4"></div>
-    </div>
-    
-    <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar collapsed">
-        <div class="sidebar-header">
-            <button id="sidebarToggle" class="sidebar-toggle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M3 12h18M3 6h18M3 18h18" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </button>
-            <h3 class="sidebar-title">Conversas</h3>
-        </div>
-        
-        <div class="sidebar-content">
-            <button class="new-chat-btn" id="newChatBtn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M12 5v14M5 12h14" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                <span>Nova Conversa</span>
-            </button>
-            
-            <div class="chat-history" id="chatHistory">
-                <!-- Dynamic chat history items -->
-            </div>
-        </div>
-        
-        <div class="sidebar-footer">
-            <div class="user-profile">
-                <div class="user-avatar">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="12" cy="7" r="4" stroke-width="2"/>
-                    </svg>
-                </div>
-                <div class="user-info">
-                    <p class="user-name">Usuário</p>
-                    <p class="user-status">Premium</p>
-                </div>
-            </div>
-        </div>
-    </aside>
-    
-    <!-- Main Container -->
-    <div class="main-container">
-        
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <div class="header-left">
-                    <button id="menuToggle" class="icon-btn menu-toggle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M3 12h18M3 6h18M3 18h18" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    
-                    <div class="logo-section">
-                        <div class="logo-container">
-                            <div class="logo-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="logo-svg">
-                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <div class="logo-pulse"></div>
-                            </div>
-                            <div class="status-indicator">
-                                <span class="status-dot"></span>
-                            </div>
-                        </div>
-                        <div class="logo-text">
-                            <h1>NEXIA <span class="version-badge">v3.0</span></h1>
-                            <p class="slogan">
-                                <span class="neural-text" id="neuralStatus">Neural Network Active</span>
-                                <span class="separator">•</span>
-                                <span class="mode-indicator-inline" id="currentModeDisplay">Modo Geral</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="header-center">
-                    <div class="quick-actions">
-                        <button class="quick-action-btn" data-action="summarize" title="Resumir conversa">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-width="2"/>
-                                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                        <button class="quick-action-btn" data-action="translate" title="Traduzir">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-width="2"/>
-                            </svg>
-                        </button>
-                        <button class="quick-action-btn" data-action="code" title="Gerar código">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <polyline points="16 18 22 12 16 6" stroke-width="2" stroke-linecap="round"/>
-                                <polyline points="8 6 2 12 8 18" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                        <button class="quick-action-btn" data-action="analyze" title="Análise profunda">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <circle cx="11" cy="11" r="8" stroke-width="2"/>
-                                <path d="M21 21l-4.35-4.35" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="header-right">
-                    <div class="ai-metrics">
-                        <div class="metric-item">
-                            <span class="metric-label">Precisão</span>
-                            <span class="metric-value" id="aiPrecision">98%</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="metric-label">Tokens</span>
-                            <span class="metric-value" id="tokenCount">0</span>
-                        </div>
-                    </div>
-                    
-                    <div class="header-controls">
-                        <!-- Voice Control -->
-                        <button id="voiceBtn" class="icon-btn" title="Controle de voz (V)">
-                            <svg class="icon-voice" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" stroke-width="2"/>
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            <span class="voice-indicator"></span>
-                        </button>
-                        
-                        <!-- Sound Toggle -->
-                        <button id="soundBtn" class="icon-btn" title="Som (S)">
-                            <svg class="icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <svg class="icon-sound-off hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        
-                        <!-- Settings -->
-                        <button id="settingsBtn" class="icon-btn" title="Configurações">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <circle cx="12" cy="12" r="3" stroke-width="2"/>
-                                <path d="M12 1v6m0 6v10M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h10M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                        
-                        <!-- Export -->
-                        <button id="exportBtn" class="icon-btn" title="Exportar (E)">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        
-                        <!-- Theme Toggle -->
-                        <button id="themeToggle" class="icon-btn theme-toggle" title="Tema (T)">
-                            <svg class="sun-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <circle cx="12" cy="12" r="5" stroke-width="2"/>
-                                <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m12.72-12.72l1.42-1.42" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        
-                        <!-- Mode Menu -->
-                        <button id="menuBtn" class="icon-btn mode-menu-btn" title="Modos (M)">
-                            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <circle cx="12" cy="12" r="1" stroke-width="2"/>
-                                <circle cx="12" cy="5" r="1" stroke-width="2"/>
-                                <circle cx="12" cy="19" r="1" stroke-width="2"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Mode Menu Dropdown -->
-            <div id="modeMenu" class="mode-menu-dropdown hidden">
-                <div class="mode-menu-header">
-                    <h3>Modos de IA</h3>
-                    <p>Selecione o modo ideal para sua necessidade</p>
-                </div>
-                <div class="mode-grid">
-                    <button class="mode-btn active" data-mode="general">
-                        <div class="mode-icon-wrapper">
-                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="mode-content">
-                            <span class="mode-name">Geral</span>
-                            <span class="mode-desc">Assistência completa e versátil</span>
-                        </div>
-                        <div class="mode-badge">Padrão</div>
-                    </button>
-                    
-                    <button class="mode-btn" data-mode="creative">
-                        <div class="mode-icon-wrapper">
-                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <div class="mode-content">
-                            <span class="mode-name">Criativo</span>
-                            <span class="mode-desc">Ideias inovadoras e originais</span>
-                        </div>
-                    </button>
-                    
-                    <button class="mode-btn" data-mode="technical">
-                        <div class="mode-icon-wrapper">
-                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <polyline points="16 18 22 12 16 6" stroke-width="2" stroke-linecap="round"/>
-                                <polyline points="8 6 2 12 8 18" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="mode-content">
-                            <span class="mode-name">Técnico</span>
-                            <span class="mode-desc">Precisão e expertise técnica</span>
-                        </div>
-                    </button>
-                    
-                    <button class="mode-btn" data-mode="explain">
-                        <div class="mode-icon-wrapper">
-                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <div class="mode-content">
-                            <span class="mode-name">Explicativo</span>
-                            <span class="mode-desc">Ensino claro e didático</span>
-                        </div>
-                    </button>
-                    
-                    <button class="mode-btn" data-mode="translator">
-                        <div class="mode-icon-wrapper">
-                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <div class="mode-content">
-                            <span class="mode-name">Tradutor</span>
-                            <span class="mode-desc">50+ idiomas com contexto</span>
-                        </div>
-                    </button>
-                    
-                    <button class="mode-btn" data-mode="analyst">
-                        <div class="mode-icon-wrapper">
-                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="mode-content">
-                            <span class="mode-name">Analista</span>
-                            <span class="mode-desc">Análise profunda de dados</span>
-                        </div>
-                        <div class="mode-badge">Pro</div>
-                    </button>
-                    
-                    <button class="mode-btn" data-mode="writer">
-                        <div class="mode-icon-wrapper">
-                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M12 19l7-7 3 3-7 7-3-3z" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M2 2l7.586 7.586" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="mode-content">
-                            <span class="mode-name">Escritor</span>
-                            <span class="mode-desc">Criação de conteúdo premium</span>
-                        </div>
-                    </button>
-                    
-                    <button class="mode-btn" data-mode="coach">
-                        <div class="mode-icon-wrapper">
-                            <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2" stroke-linecap="round"/>
-                                <circle cx="9" cy="7" r="4" stroke-width="2"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="mode-content">
-                            <span class="mode-name">Coach</span>
-                            <span class="mode-desc">Mentoria e desenvolvimento</span>
-                        </div>
-                        <div class="mode-badge">Beta</div>
-                    </button>
-                </div>
-            </div>
-        </header>
+<body>
 
-        <!-- Main Chat Area -->
-        <main class="chat-container">
-            <!-- Suggestions (shown when empty) -->
-            <div id="suggestions" class="suggestions-grid">
-                <div class="suggestion-card" data-prompt="Explique inteligência artificial de forma simples">
-                    <div class="suggestion-icon">🤖</div>
-                    <p class="suggestion-text">Explique IA de forma simples</p>
-                </div>
-                <div class="suggestion-card" data-prompt="Crie um plano de estudos personalizado">
-                    <div class="suggestion-icon">📚</div>
-                    <p class="suggestion-text">Plano de estudos personalizado</p>
-                </div>
-                <div class="suggestion-card" data-prompt="Analise este código e sugira melhorias">
-                    <div class="suggestion-icon">💻</div>
-                    <p class="suggestion-text">Análise de código</p>
-                </div>
-                <div class="suggestion-card" data-prompt="Resuma as principais notícias de tecnologia">
-                    <div class="suggestion-icon">📰</div>
-                    <p class="suggestion-text">Resumo de notícias tech</p>
-                </div>
-            </div>
-            
-            <div id="chatMessages" class="chat-messages"></div>
-            
-            <!-- Typing Indicator -->
-            <div id="typingIndicator" class="typing-indicator hidden">
-                <div class="typing-bubble">
-                    <div class="neural-thinking">
-                        <div class="neural-pulse"></div>
-                        <div class="neural-pulse"></div>
-                        <div class="neural-pulse"></div>
-                    </div>
-                    <span class="typing-text">NEXIA está processando...</span>
-                </div>
-            </div>
-            
-            <!-- Scroll to Bottom Button -->
-            <button id="scrollBottomBtn" class="scroll-bottom-btn hidden">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M12 5v14M19 12l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="unread-count hidden" id="unreadCount">0</span>
-            </button>
-        </main>
+<!-- orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
 
-        <!-- Input Area -->
-        <div class="input-area">
-            <!-- Context Pills -->
-            <div id="contextPills" class="context-pills hidden">
-                <!-- Dynamic context pills -->
-            </div>
-            
-            <div class="input-wrapper">
-                <div class="input-container">
-                    <!-- File Preview -->
-                    <div id="filePreview" class="file-preview hidden">
-                        <!-- Dynamic file previews -->
-                    </div>
-                    
-                    <textarea 
-                        id="messageInput" 
-                        class="message-input" 
-                        placeholder="Digite sua mensagem ou use @ para comandos..."
-                        rows="1"
-                        autocomplete="off"
-                        spellcheck="true"
-                        maxlength="4000"
-                    ></textarea>
-                    
-                    <div class="input-actions">
-                        <button id="emojiBtn" class="input-action-btn" title="Emojis">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke-width="2" stroke-linecap="round"/>
-                                <line x1="9" y1="9" x2="9.01" y2="9" stroke-width="2" stroke-linecap="round"/>
-                                <line x1="15" y1="9" x2="15.01" y2="9" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                        
-                        <button id="attachBtn" class="input-action-btn" title="Anexar arquivo">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            <input type="file" id="fileInput" accept=".txt,.pdf,.doc,.docx,.jpg,.png" hidden>
-                        </button>
-                        
-                        <button id="cameraBtn" class="input-action-btn" title="Câmera">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" stroke-width="2"/>
-                                <circle cx="12" cy="13" r="4" stroke-width="2"/>
-                            </svg>
-                        </button>
-                        
-                        <div class="input-divider"></div>
-                        
-                        <button id="micBtn" class="input-action-btn mic-btn" title="Voz para texto">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" stroke-width="2"/>
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                
-                <button id="sendBtn" class="send-btn" title="Enviar (Ctrl+Enter)">
-                    <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="send-text">Enviar</span>
-                </button>
-            </div>
-            
-            <!-- Input Info Bar -->
-            <div class="input-info">
-                <div class="info-left">
-                    <span id="charCount" class="char-count">0 / 4000</span>
-                    <span class="separator">•</span>
-                    <span class="input-hint">
-                        <span id="quickTip">💡 Use @ para comandos rápidos</span>
-                    </span>
-                </div>
-                <div class="info-right">
-                    <span class="processing-status" id="processingStatus">
-                        <span class="status-dot"></span>
-                        Pronto
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Settings Modal -->
-    <div id="settingsModal" class="modal hidden">
-        <div class="modal-overlay"></div>
-        <div class="modal-content settings-modal">
-            <div class="modal-header">
-                <h2>Configurações</h2>
-                <button class="modal-close" id="closeSettings">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M18 6L6 18M6 6l12 12" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="modal-body">
-                <div class="settings-section">
-                    <h3>Aparência</h3>
-                    <div class="setting-item">
-                        <label>Tema</label>
-                        <div class="theme-selector">
-                            <button class="theme-option" data-theme="dark">
-                                <span class="theme-preview dark-preview"></span>
-                                Escuro
-                            </button>
-                            <button class="theme-option" data-theme="light">
-                                <span class="theme-preview light-preview"></span>
-                                Claro
-                            </button>
-                            <button class="theme-option" data-theme="auto">
-                                <span class="theme-preview auto-preview"></span>
-                                Auto
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="setting-item">
-                        <label>Animações</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="animationsToggle" checked>
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="settings-section">
-                    <h3>IA & Respostas</h3>
-                    <div class="setting-item">
-                        <label>Temperatura da IA</label>
-                        <input type="range" id="temperatureSlider" min="0" max="100" value="70" class="slider">
-                        <span class="slider-value" id="temperatureValue">0.7</span>
-                    </div>
-                    
-                    <div class="setting-item">
-                        <label>Tamanho máximo de resposta</label>
-                        <select id="maxTokensSelect" class="select-input">
-                            <option value="500">Curto (500 tokens)</option>
-                            <option value="1000" selected>Médio (1000 tokens)</option>
-                            <option value="2000">Longo (2000 tokens)</option>
-                            <option value="4000">Extra longo (4000 tokens)</option>
-                        </select>
-                        </div>
-                    
-                    <div class="setting-item">
-                        <label>Formatação de código</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="codeFormattingToggle" checked>
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-                    
-                    <div class="setting-item">
-                        <label>Contexto da conversa</label>
-                        <select id="contextLengthSelect" class="select-input">
-                            <option value="5">5 mensagens</option>
-                            <option value="10" selected>10 mensagens</option>
-                            <option value="20">20 mensagens</option>
-                            <option value="50">50 mensagens</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="settings-section">
-                    <h3>Áudio & Notificações</h3>
-                    <div class="setting-item">
-                        <label>Sons do sistema</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="systemSoundsToggle" checked>
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-                    
-                    <div class="setting-item">
-                        <label>Voz da IA (Text-to-Speech)</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="ttsToggle">
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-                    
-                    <div class="setting-item">
-                        <label>Notificações desktop</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="notificationsToggle">
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="settings-section">
-                    <h3>Privacidade & Dados</h3>
-                    <div class="setting-item">
-                        <label>Salvar histórico localmente</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="saveHistoryToggle" checked>
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-                    
-                    <div class="setting-item">
-                        <button class="danger-btn" id="clearAllData">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-width="2"/>
-                            </svg>
-                            Limpar todos os dados
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="settings-section">
-                    <h3>Avançado</h3>
-                    <div class="setting-item">
-                        <label>API Key da Mistral</label>
-                        <div class="input-with-button">
-                            <input type="password" id="apiKeyInput" class="text-input" placeholder="sk-...">
-                            <button class="icon-btn" id="toggleApiKey">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-width="2"/>
-                                    <circle cx="12" cy="12" r="3" stroke-width="2"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="setting-item">
-                        <label>Modo desenvolvedor</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="devModeToggle">
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="modal-footer">
-                <button class="btn-secondary" id="resetSettings">Restaurar padrões</button>
-                <button class="btn-primary" id="saveSettings">Salvar alterações</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Command Palette -->
-    <div id="commandPalette" class="command-palette hidden">
-        <div class="command-palette-content">
-            <div class="command-search">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <circle cx="11" cy="11" r="8" stroke-width="2"/>
-                    <path d="M21 21l-4.35-4.35" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                <input type="text" id="commandSearch" placeholder="Buscar comandos...">
-                <kbd>Esc</kbd>
-            </div>
-            <div class="command-list" id="commandList">
-                <!-- Dynamic command list -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Container -->
-    <div id="toastContainer" class="toast-container"></div>
-
-    <!-- Context Menu -->
-    <div id="contextMenu" class="context-menu hidden">
-        <button class="context-menu-item" data-action="copy">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <rect x="9" y="9" width="13" height="13" rx="2" stroke-width="2"/>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-width="2"/>
+<!-- ═══ HEADER ═══ -->
+<header id="header">
+    <nav>
+        <a href="https://sion.ai" class="logo-link">
+            <!-- SVG Logo: S.ai+ -->
+            <svg class="logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%"  stop-color="#00F0FF"/>
+                        <stop offset="50%" stop-color="#7B2CBF"/>
+                        <stop offset="100%" stop-color="#FF006E"/>
+                    </linearGradient>
+                    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%"  stop-color="#FF006E"/>
+                        <stop offset="100%" stop-color="#FFD60A"/>
+                    </linearGradient>
+                </defs>
+                <!-- outer ring -->
+                <circle cx="21" cy="21" r="20" stroke="url(#g1)" stroke-width="2" fill="none" opacity=".6"/>
+                <!-- bold S -->
+                <text x="7" y="29" font-family="Syne, sans-serif" font-weight="800" font-size="22" fill="url(#g1)">S</text>
+                <!-- .ai subscript -->
+                <text x="20" y="29" font-family="Space Mono, monospace" font-weight="700" font-size="10" fill="url(#g2)">.ai</text>
+                <!-- + accent (top-right) -->
+                <g fill="none" stroke="url(#g2)" stroke-width="2.2" stroke-linecap="round">
+                    <line x1="35" y1="5"  x2="35" y2="13"/>
+                    <line x1="31" y1="9"  x2="39" y2="9"/>
+                </g>
             </svg>
-            Copiar
-        </button>
-        <button class="context-menu-item" data-action="regenerate">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            Regenerar
-        </button>
-        <button class="context-menu-item" data-action="edit">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke-width="2"/>
-                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke-width="2"/>
-            </svg>
-            Editar
-        </button>
-        <button class="context-menu-item" data-action="share">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <circle cx="18" cy="5" r="3" stroke-width="2"/>
-                <circle cx="6" cy="12" r="3" stroke-width="2"/>
-                <circle cx="18" cy="19" r="3" stroke-width="2"/>
-                <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" stroke-width="2"/>
-            </svg>
-            Compartilhar
-        </button>
-        <div class="context-menu-divider"></div>
-        <button class="context-menu-item danger" data-action="delete">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-width="2"/>
-            </svg>
-            Deletar
-        </button>
-    </div>
+            <span class="brand-name">Sion.ai</span>
+        </a>
 
-    <!-- Emoji Picker -->
-    <div id="emojiPicker" class="emoji-picker hidden">
-        <div class="emoji-search">
-            <input type="text" placeholder="Buscar emoji..." id="emojiSearch">
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#sena">Sena</a></li>
+            <li><a href="#ecossistema">Ecossistema</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#jornada">Jornada</a></li>
+            <li><a href="#contato" class="cta-nav">Contato</a></li>
+        </ul>
+
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
         </div>
-        <div class="emoji-categories">
-            <button class="emoji-category active" data-category="recent">🕐</button>
-            <button class="emoji-category" data-category="smileys">😊</button>
-            <button class="emoji-category" data-category="people">👋</button>
-            <button class="emoji-category" data-category="nature">🌿</button>
-            <button class="emoji-category" data-category="food">🍕</button>
-            <button class="emoji-category" data-category="activity">⚽</button>
-            <button class="emoji-category" data-category="travel">✈️</button>
-            <button class="emoji-category" data-category="objects">💡</button>
-            <button class="emoji-category" data-category="symbols">❤️</button>
+    </nav>
+</header>
+
+<main>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Plataforma de IA
+            </div>
+            <h1>
+                Aprenda.<br>
+                Desenvolva.<br>
+                <span class="gradient-text">Evolua.</span>
+            </h1>
+            <p>
+                Inteligência artificial criada para acompanhar o seu crescimento, do primeiro passo à próxima grande ideia. A tecnologia não substitui você — ela caminha ao seu lado.
+            </p>
+            <div class="hero-cta">
+                <a href="https://chat.cici.net.br" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    Começar agora <span>→</span>
+                </a>
+                <a href="#ecossistema" class="btn-secondary">
+                    Explorar <span>↓</span>
+                </a>
+            </div>
         </div>
-        <div class="emoji-grid" id="emojiGrid">
-            <!-- Dynamic emoji list -->
+
+        <div class="hero-visual">
+            <div class="visual-container">
+                <div class="float-card">
+                    <div class="fc-icon">📚</div>
+                    <div class="fc-label">Aprendizado</div>
+                    <div class="fc-value">24/7</div>
+                </div>
+                <div class="float-card">
+                    <div class="fc-icon">⚡</div>
+                    <div class="fc-label">Precisão</div>
+                    <div class="fc-value">98%</div>
+                </div>
+                <div class="float-card">
+                    <div class="fc-icon">🚀</div>
+                    <div class="fc-label">Produtos</div>
+                    <div class="fc-value">4+</div>
+                </div>
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-left">
-                <div class="mission">
-                    <div class="mission-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
+<!-- ═══ STATS ═══ -->
+<div class="stats-band">
+    <div class="stats-grid">
+        <div class="reveal">
+            <div class="stat-number">2025</div>
+            <div class="stat-label">Fundada</div>
+        </div>
+        <div class="reveal">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Produtos</div>
+        </div>
+        <div class="reveal">
+            <div class="stat-number">99.9%</div>
+            <div class="stat-label">Uptime</div>
+        </div>
+        <div class="reveal">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Disponível</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ SENA ═══ -->
+<section id="sena">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-tag">Produto Principal</div>
+            <h2 class="section-title">Conheça a <span class="gradient-text">Sena</span></h2>
+            <p class="section-sub">
+                Sena by Sion.ai — nossa plataforma de IA de última geração. Processamento de linguagem natural que entende contexto, aprende com você e entrega respostas que realmente importam.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feat-card reveal">
+                <span class="feat-icon">🧠</span>
+                <h3>Aprendizado Inteligente</h3>
+                <p>Adapta o conteúdo ao seu ritmo. Não apenas responde — orienta, questiona e guia. Compreensão contextual que entende intenções e necessidades reais.</p>
+            </div>
+            <div class="feat-card reveal">
+                <span class="feat-icon">💡</span>
+                <h3>Contexto que Acompanha</h3>
+                <p>Sistema de memória que analisa seu histórico e adapta respostas ao seu progresso. Aprende seus padrões para entregar suporte cada vez mais relevante.</p>
+            </div>
+            <div class="feat-card reveal">
+                <span class="feat-icon">🔄</span>
+                <h3>Evolução Contínua</h3>
+                <p>Modelos que crescem junto com você. Pipeline MLOps automatizado que refina algoritmos com base em interações reais, sempre um passo à frente.</p>
+            </div>
+            <div class="feat-card reveal">
+                <span class="feat-icon">⚡</span>
+                <h3>Performance Ultra-Rápida</h3>
+                <p>GPUs dedicadas e caching inteligente. Latência média de 200ms para consultas complexas. Resposta instantânea, sem espera, sem frustração.</p>
+            </div>
+            <div class="feat-card reveal">
+                <span class="feat-icon">🔒</span>
+                <h3>Segurança Enterprise</h3>
+                <p>Criptografia end-to-end AES-256, conformidade com LGPD e GDPR. Autenticação OAuth 2.0 e isolamento de dados por tenant. Seus dados são seus.</p>
+            </div>
+            <div class="feat-card reveal">
+                <span class="feat-icon">🌐</span>
+                <h3>API Completa & Flexível</h3>
+                <p>Documentação OpenAPI interativa, SDKs para Python, Node.js e Java. Webhooks em tempo real. Integre a Sena onde você precisa.</p>
+            </div>
+        </div>
+
+        <div class="sena-cta reveal">
+            <a href="https://chat.cici.net.br" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Acessar a Sena <span>→</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ECOSSISTEMA ═══ -->
+<section id="ecossistema">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-tag">Ecossistema</div>
+            <h2 class="section-title">O que você pode <span class="gradient-text">fazer</span></h2>
+            <p class="section-sub">
+                Estudar com apoio inteligente. Desenvolver projetos e códigos. Criar conteúdos e ideias. Organizar tarefas e produtividade. Tudo em um só ecossistema.
+            </p>
+        </div>
+
+        <div class="eco-grid">
+            <article class="eco-card reveal">
+                <div class="eco-status active">● Ativo</div>
+                <h3>Sena by Sion.ai</h3>
+                <p>A plataforma principal de IA. Processamento de linguagem natural que aprende com você e entrega respostas que realmente ajudam — seja estudando, criando ou resolvendo problemas.</p>
+                <p>Suporte a múltiplos idiomas, memória de contexto longo e integração via API.</p>
+                <div class="eco-links">
+                    <a href="https://chat.cici.net.br" target="_blank" rel="noopener noreferrer" class="eco-link">🚀 Acessar a Sena</a>
+                </div>
+            </article>
+
+            <article class="eco-card reveal">
+                <div class="eco-status soon">● Em breve</div>
+                <h3>Valora by Sion.ai</h3>
+                <p>Ferramenta de análise e avaliação inteligente. Mede progresso real — de projetos a habilidades — com feedback estruturado e dashboards personalizados alimentados por IA.</p>
+                <p>Para quem precisa não apenas produzir, mas entender o que está funcionando.</p>
+                <div class="eco-links">
+                    <span class="eco-link muted">🚀 Lançamento em breve</span>
+                </div>
+            </article>
+
+            <article class="eco-card reveal">
+                <div class="eco-status soon">● Em breve</div>
+                <h3>Sion Code</h3>
+                <p>Ambiente de desenvolvimento assistido por IA. Escreva código mais rápido, depure com mais eficiência e aprenda programação de forma prática — sem manuais densos.</p>
+                <p>Autocompletar contextual e explicações inline. Para quem começa e para quem já sabe.</p>
+                <div class="eco-links">
+                    <span class="eco-link muted">🚀 Lançamento em breve</span>
+                </div>
+            </article>
+
+            <article class="eco-card reveal">
+                <div class="eco-status soon">● Em breve</div>
+                <h3>Sion Pay</h3>
+                <p>Solução de pagamentos integrada ao ecossistema. Monetização de produtos e serviços digitais mais simples, segura e acessível — para criadores e empreendedores.</p>
+                <p>Funciona junto com os outros produtos da Sion.ai, formando um ecossistema completo.</p>
+                <div class="eco-links">
+                    <span class="eco-link muted">🚀 Lançamento em breve</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ JORNADA ═══ -->
+<section id="jornada">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-tag">Timeline</div>
+            <h2 class="section-title">Nossa <span class="gradient-text">Jornada</span></h2>
+            <p class="section-sub">Do primeiro algoritmo à plataforma que está sendo construída agora.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="tl-item reveal">
+                <div class="tl-date">Janeiro 2025</div>
+                <h3>Nascimento da Sion.ai</h3>
+                <p>Início oficial com foco em pesquisa e desenvolvimento. Definição da visão: criar uma plataforma de IA que realmente acompanha o crescimento das pessoas.</p>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-date">Fevereiro 2025</div>
+                <h3>Desenvolvimento da Sena</h3>
+                <p>Primeiros protótipos baseados em arquiteturas transformer. Testes iniciais com NLP em português, alcançando 85% de precisão em compreensão contextual.</p>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-date">Março 2025</div>
+                <h3>Sena Beta Release</h3>
+                <p>Versão beta para grupo seleto de early adopters. Coleta intensiva de feedback e iterações rápidas. Infraestrutura escalando para 1K requisições diárias.</p>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-date">Q2 2025</div>
+                <h3>Lançamento do Valora</h3>
+                <p>Primeiro lançamento do Valora by Sion.ai — ferramenta de análise e avaliação inteligente integrada à Sena.</p>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-date">Q3 2025</div>
+                <h3>Sion Code & Expansão</h3>
+                <p>Ambiente de desenvolvimento assistido por IA. Início da expansão com Sion Pay e parcerias B2B para acelerar crescimento.</p>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-date">Q4 2025</div>
+                <h3>Ecossistema Completo</h3>
+                <p>Todos os produtos operando em harmonia. API pública da Sena e início da captação de investimento seed.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SOBRE ═══ -->
+<section id="sobre">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-tag">Quem Somos</div>
+            <h2 class="section-title">Sobre a <span class="gradient-text">Sion.ai</span></h2>
+        </div>
+
+        <div class="sobre-text">
+            <p class="reveal">A Sion.ai é uma plataforma de inteligência artificial focada em aprendizado, desenvolvimento e evolução contínua de pessoas e produtos. Não somos uma IA genérica que responde tudo igual para todo mundo — somos uma ferramenta que cresce com você.</p>
+            <p class="reveal">Acreditamos que aprender não é consumir informação. É questionar, errar e testar de novo. Desenvolver não é apenas escrever código — é construir ideias que funcionam no mundo real. Evoluir não é um evento, é um processo constante, às vezes desconfortável, sempre necessário.</p>
+            <p class="reveal">Não prometemos atalhos mágicos. Prometemos ferramentas inteligentes que crescem com você. Para criadores, estudantes, desenvolvedores e profissionais cansados do óbvio.</p>
+        </div>
+
+        <div class="manifesto-block reveal">
+            <p>
+                Aprender é o começo.<br>
+                Desenvolver é o caminho.<br>
+                <span class="gradient-text">Evoluir é o objetivo.</span>
+            </p>
+        </div>
+
+        <!-- Team -->
+        <div style="text-align:center; margin-top:5rem;" class="reveal">
+            <h3 class="section-title" style="font-size:2.2rem;">Nosso <span class="gradient-text">Time</span></h3>
+        </div>
+        <div class="team-grid">
+            <div class="team-card reveal">
+                <div class="team-avatar">AI</div>
+                <h4>Naoto Dev</h4>
+                <p class="role">CEO & Co-founder</p>
+            </div>
+            <div class="team-card reveal">
+                <div class="team-avatar">RC</div>
+                <h4>Naoto Dev</h4>
+                <p class="role">CTO & AI Lead</p>
+            </div>
+            <div class="team-card reveal">
+                <div class="team-avatar">MS</div>
+                <h4>Naoto Dev</h4>
+                <p class="role">Product Designer</p>
+            </div>
+            <div class="team-card reveal">
+                <div class="team-avatar">LP</div>
+                <h4>Naoto Dev</h4>
+                <p class="role">ML Engineer</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CONTATO ═══ -->
+<section id="contato">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-tag">Fale Conosco</div>
+            <h2 class="section-title">Vamos <span class="gradient-text">Crescer</span> Juntos</h2>
+            <p class="section-sub">Entre em contato para parcerias, oportunidades de carreira ou para conversar sobre como a Sion.ai pode ajudar no seu crescimento.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-list">
+                <div class="contact-item reveal">
+                    <span class="ci-icon">📧</span>
                     <div>
-                        <p class="mission-title">Missão AmplaAI</p>
-                        <p class="mission-text">Simplificar o acesso à tecnologia e ao conhecimento, transformando a forma como as pessoas interagem com o digital através de IA avançada.</p>
+                        <strong>E-mail</strong>
+                        <a href="mailto:contato@sion.ai">ampla.ai@outlook.com</a>
+                    </div>
+                </div>
+                <div class="contact-item reveal">
+                    <span class="ci-icon">📱</span>
+                    <div>
+                        <strong>Instagram</strong>
+                        <a href="https://instagram.com/sion.ai" target="_blank" rel="noopener noreferrer">@sion.ai</a>
+                    </div>
+                </div>
+                <div class="contact-item reveal">
+                    <span class="ci-icon">💼</span>
+                    <div>
+                        <strong>Parcerias</strong>
+                        <a href="mailto:parcerias@sion.ai">ampla.ai@outlook.com</a>
                     </div>
                 </div>
             </div>
-            
-            <div class="footer-center">
-                <div class="footer-stats">
-                    <div class="stat-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-width="2"/>
-                        </svg>
-                        <div>
-                            <span class="stat-value" id="totalMessages">0</span>
-                            <span class="stat-label">Mensagens</span>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                            <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <div>
-                            <span class="stat-value" id="sessionTime">00:00</span>
-                            <span class="stat-label">Sessão</span>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <div>
-                            <span class="stat-value" id="totalTokens">0</span>
-                            <span class="stat-label">Tokens</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-right">
-                <div class="footer-links">
-                    <a href="#termos" class="footer-link">Termos de Uso</a>
-                    <a href="#privacidade" class="footer-link">Privacidade</a>
-                    <a href="#api" class="footer-link">API</a>
-                    <a href="#docs" class="footer-link">Documentação</a>
-                    <a href="#status" class="footer-link">Status</a>
-                    <a href="#contato" class="footer-link">Contato</a>
-                </div>
-                
-                <div class="social-links">
-                    <a href="#" class="social-link" title="Twitter">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" title="GitHub">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" title="Discord">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" title="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
-                            <circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- AdSense Block -->
-        <div class="ad-container">
-            <div class="ad-label">Publicidade</div>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-ADSENSE_CLIENT_ID"
-                 data-ad-slot="0000000000"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-        </div>
-        
-        <div class="footer-bottom">
-            <p class="copyright">© 2024 AmplaAI • NEXIA v3.0 • Powered by Neural AI Technology • All rights reserved</p>
-            <div class="footer-badges">
-                <span class="badge">🔒 Seguro</span>
-                <span class="badge">⚡ Ultra-rápido</span>
-                <span class="badge">🌍 Global</span>
-                <span class="badge">🎯 Preciso</span>
-            </div>
-        </div>
-    </footer>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-    
-    <!-- AdSense Init -->
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+            <form class="contact-form reveal" onsubmit="handleForm(event)">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="msg">Mensagem</label>
+                    <textarea id="msg" name="message" placeholder="Como podemos ajudar?" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+                    Enviar Mensagem <span>→</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>Sion.ai</h3>
+            <p>Aprenda. Desenvolva. Evolua.<br>IA que cresce com você.</p>
+            <div class="social-row">
+                <a href="https://instagram.com/sion.ai"  class="social-btn" target="_blank" rel="noopener noreferrer">📱</a>
+                <a href="https://github.com/orpheostudio" class="social-btn" target="_blank" rel="noopener noreferrer">💻</a>
+                <a href="https://linkedin.com/company/sionai" class="social-btn" target="_blank" rel="noopener noreferrer">💼</a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Produtos</h4>
+            <ul>
+                <li><a href="#sena">Sena</a></li>
+                <li><a href="https://chat.cici.net.br" target="_blank" rel="noopener noreferrer">Acessar Sena</a></li>
+                <li><a href="#ecossistema">Valora</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Ecossistema</h4>
+            <ul>
+                <li><a href="#ecossistema">Sion Code</a></li>
+                <li><a href="#ecossistema">Sion Pay</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="https://sion.ai/termos"    target="_blank" rel="noopener noreferrer">Termos de Uso</a></li>
+                <li><a href="https://sion.ai/politicas" target="_blank" rel="noopener noreferrer">Privacidade</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Sion.ai — Todos os direitos reservados.</p>
+        <p>Feito com 💜 no Brasil</p>
+    </div>
+</footer>
+
+<!-- scroll-top btn -->
+<button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">↑</button>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+(function(){
+    // ── header scroll ──
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // ── hamburger mobile ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
+        });
+    });
+
+    // ── smooth scroll ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (!target) return;
+            const top = target.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top, behavior: 'smooth' });
+        });
+    });
+
+    // ── scroll-top button ──
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+        scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+    // ── Intersection Observer – reveal on scroll ──
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // ── form handler ──
+    window.handleForm = function(e) {
+        e.preventDefault();
+        alert('Funcionalidade de envio em desenvolvimento!\nPor enquanto, entre em contato por e-mail: contato@sion.ai');
+    };
+})();
+</script>
+
 </body>
 </html>
